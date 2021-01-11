@@ -1,4 +1,5 @@
 const chiedi = require('prompt-sync')();
+import { Attributi } from "./model/entity/Attributo";
 import { EntitaTypeorm } from "./model/entity/EntitaTypeorm";
 import { Progetto } from "./model/Progetto";
 
@@ -78,7 +79,8 @@ export function AggiungiEntita(progetto: Progetto) {
             switch (scelta) {
                 case '1':
                     const nomeTypeorm:string=chiedi("Inserischi nome entita :");
-                    AggiungiEntitaTypeORM(progetto,nomeTypeorm);
+                    const attributi:Attributi = [];
+                    AggiungiEntitaTypeORM(progetto,nomeTypeorm, attributi);
                     AggiungiEntita(progetto);
                     break;
                 case '2':                    
@@ -99,10 +101,10 @@ export function AggiungiEntita(progetto: Progetto) {
     }
 }
 
-export function AggiungiEntitaTypeORM(progetto: Progetto, nome: string) {
-    const modelTmp :EntitaTypeorm = progetto.typeorm.model.AggiungiEntita(nome);
-    progetto.typeorm.repository.AggiungiEntita(nome, modelTmp);
-    progetto.typeorm.controller.AggiungiEntita(nome, modelTmp);
+export function AggiungiEntitaTypeORM(progetto: Progetto, nome: string, attributi:Attributi) {
+    /* const modelTmp :EntitaTypeorm = */ progetto.typeorm.model.AggiungiEntitaModello(nome);
+    /* progetto.typeorm.repository.AggiungiEntita(nome, modelTmp);
+    progetto.typeorm.controller.AggiungiEntita(nome, modelTmp); */
 }
 
 export function AggiungiEntitaTypeExpress(progetto: Progetto, nome: string) {

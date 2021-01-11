@@ -1,5 +1,6 @@
 import { EntitaCartella } from "../../../entity/EntitaCartella";
 import { EntitaExpress } from "../../../entity/EntitaExpress";
+import { EntitaApi } from "../../../entity/EntitaApi";
 
 class Relazione extends EntitaExpress {
     listaEntita: EntitaApi[] = [];
@@ -67,12 +68,14 @@ export class Api extends EntitaCartella {
         console.log("nome : " + this.nomeCartella);
         console.log("path : " + this.path);
     }
+
     Salva() {
         super.Salva(); //creo la cartella API
         this.listaEntita.forEach(element => {
             element.Salva();//creo i file al loro interno tipo admin-to-admin... e creo la cartella dell'api es admin
         });
     }
+
     AggiungiAttore(nome: string) {
         if (this.CercaAttore(nome) == undefined) {
             this.listaEntita.push(new Attore(nome));
@@ -96,6 +99,7 @@ export class Api extends EntitaCartella {
             }
         }
     }
+    
     AggiungiAPI(nomeApi: string, verbo: string, fineurl: string, nomeAttore: string, nomeRelazione: string) {
         const attore = this.CercaAttore(nomeAttore);
         if (attore != undefined) {

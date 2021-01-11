@@ -1,8 +1,11 @@
-class EntitaApi {
+
+export class EntitaApi {
+
     verbo: string;
     nome: string;
     fineUrl: string;
     testo:string;
+
     constructor(verbo: string, nome: string, fineurl: string) {
         this.verbo = verbo;
         this.nome = nome;
@@ -20,3 +23,5 @@ class EntitaApi {
             `;
     }
 }
+
+
