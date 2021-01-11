@@ -7,8 +7,8 @@
     "tsc": "tsc"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Mirko Pizzini <mirkopizzini93@gmail.com> (https://github.com/mirkoBesagno/MP-project-tools)",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^14.14.20",
     "ts-node": "^9.1.1",
@@ -20,5 +20,13 @@
     "prompt-sync": "^4.2.0",
     "ts-node": "^9.0.0"
   },
-  "description": ""
+  "description": "Programma che aiuta a creare e costruire un progetto.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mirkoBesagno/MP-project-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mirkoBesagno/MP-project-tools/issues"
+  },
+  "homepage": "https://github.com/mirkoBesagno/MP-project-tools#readme"
 }
