@@ -1,11 +1,11 @@
 import { Interface } from "readline";
 import { EntitaCartella } from "../../entity/EntitaCartella";
 import { EntitaTypeorm } from "../../entity/EntitaTypeorm";
-import { Controller } from "./model/Controller";
+import { AttributoController, Controller } from "./model/Controller";
 import { Error } from "./model/Error";
 import { Interfaces } from "./model/Interfaces";
-import { Model } from "./model/Model";
-import { Repository } from "./model/Repository";
+import { Model, EntitaModello, AttributoModel } from "./model/Model";
+import { AttributoRepository, Repository } from "./model/Repository";
 import { View } from "./model/View";
 
 export class TypeORM extends EntitaCartella {
@@ -41,11 +41,26 @@ export class TypeORM extends EntitaCartella {
         this.repository.Salva();
         this.view.Salva();
     }
-    AggiungiEntitaBase(nome:string) {
+    AggiungiEntitaBase(nome: string) {
         // adminRepository adminModel adminController
-        const modelTmp :EntitaTypeorm= this.model.AggiungiEntita(nome);
+        /* const modelTmp: EntitaTypeorm = this.model.AggiungiEntita(nome);
         this.repository.AggiungiEntita(nome, modelTmp);
-        this.controller.AggiungiEntita(nome, modelTmp);
+        this.controller.AggiungiEntita(nome, modelTmp); */
+    }
+    AggiungiEntita_model_repository_controller(nome: string, listaAttributi: AttributoModel[]) {
+        const modelTmp: EntitaModello  = this.model.AggiungiEntitaModello(nome, listaAttributi);
+        
+        let tmpR :AttributoRepository[] =[];
+        listaAttributi.forEach(element => {
+            tmpR.push(new AttributoRepository(element.nomeAttributo));
+        });
+        this.repository.AggiungiEntitaRepository(nome, tmpR, modelTmp);
+
+        let tmpC :AttributoController[] =[];
+        listaAttributi.forEach(element => {
+            tmpC.push(new AttributoController(element.nomeAttributo));
+        });
+        this.controller.AggiungiEntitaController(nome, tmpC, modelTmp);
     }
 }
 

@@ -24,4 +24,7 @@ export class EntitaFile {
             console.log("Errore : " + error);
         }
     }
+    SetTesto(testo:string){
+        this.testo = testo;
+    }
 }

@@ -7,4 +7,7 @@ export class EntitaTypeorm extends EntitaFile {
         }
         super(path+"/"+nome,nome,"descrizione", testo );
     }
+    SetTesto(item:string){
+        super.SetTesto(item);
+    }
 }
