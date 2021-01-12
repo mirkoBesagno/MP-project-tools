@@ -19,7 +19,7 @@ export class TypeORM extends EntitaCartella {
 
     constructor(path: string) {
         super(path + "/typeorm", "typeorm", "descrizione");
-
+        
         console.log("Typeorm : ");
         console.log("nome : " + this.nomeCartella);
         console.log("path : " + this.path);
@@ -49,7 +49,7 @@ export class TypeORM extends EntitaCartella {
     }
     AggiungiEntita_model_repository_controller(nome: string, listaAttributi: AttributoModel[]) {
         const modelTmp: EntitaModello  = this.model.AggiungiEntitaModello(nome, listaAttributi);
-        
+
         let tmpR :AttributoRepository[] =[];
         listaAttributi.forEach(element => {
             tmpR.push(new AttributoRepository(element.nomeAttributo));

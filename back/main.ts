@@ -1,5 +1,8 @@
 const chiedi = require('prompt-sync')();
+import { EntitaExpress } from "./model/entity/EntitaExpress";
 import { EntitaTypeorm } from "./model/entity/EntitaTypeorm";
+import { Express } from "./model/primo-livello/express/Express";
+import { Api, Attore } from "./model/primo-livello/express/model/Api";
 import { AttributoModel } from "./model/primo-livello/typeorm/model/Model";
 import { Progetto } from "./model/Progetto";
 
@@ -78,9 +81,9 @@ export function AggiungiEntita(progetto: Progetto) {
         if (scelta != '0') {
             switch (scelta) {
                 case '1':
-                   /*  const nomeTypeorm: string = chiedi("Inserischi nome entita :");
-                    const attributi: Attributo[] = [];
-                    AggiungiEntitaTypeORM(progetto, nomeTypeorm, attributi); */
+                    /*  const nomeTypeorm: string = chiedi("Inserischi nome entita :");
+                     const attributi: Attributo[] = [];
+                     AggiungiEntitaTypeORM(progetto, nomeTypeorm, attributi); */
                     MenuTypeORM(progetto);
                     AggiungiEntita(progetto);
                     break;
@@ -111,6 +114,7 @@ export function MenuTypeORM(progetto: Progetto) {
         let resto: Boolean = true;
         console.log("per terminare digitare exit");
         let listaAttributi: AttributoModel[] = [];
+        let listaApi: Attore[] = [];
         while (resto) {
             resto = true;
             const nomeAttributo: string = chiedi("nomeAttributo : ");
@@ -121,19 +125,31 @@ export function MenuTypeORM(progetto: Progetto) {
             if (tipologia == "exit") {
                 resto = false;
             }
+
             let tipoAttributo: string = "";
             if (tipologia == 'a') {
                 tipoAttributo = chiedi("tipoAttributo (varchar=v;int=i;date=d): ");
             }
-            if (tipoAttributo=="exit") {
-                resto=false;
+            if (tipoAttributo == "exit") {
+                resto = false;
             }
+
+            //----
+            const tipoEntita: string = chiedi("tipoEntita (entita=e; attore:a) : ");
+            if (tipoEntita == 'a') {
+                listaApi.push(new Attore(nomeAttributo));
+            }
+            if (tipoEntita == 'exit') {
+                resto = false;
+            }
+
             const attributo: AttributoModel = new AttributoModel(nomeAttributo, tipoAttributo, tipologia);
             if (resto == true) {
                 listaAttributi.push(attributo);
             }
         }
-        progetto.typeorm.AggiungiEntita_model_repository_controller(nome,listaAttributi);
+        progetto.typeorm.AggiungiEntita_model_repository_controller(nome, listaAttributi);
+        //progetto.express.api.AggiungiAttore();
     }
     catch (error) {
         console.log(error);

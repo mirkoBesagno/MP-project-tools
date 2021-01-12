@@ -25,7 +25,7 @@ class Relazione extends EntitaExpress {
         }`;
     }
 }
-class Attore extends EntitaCartella {
+export class Attore extends EntitaCartella {
     nome: string;
     listaRelazioni: Relazione[] = [];
     constructor(nome: string) {

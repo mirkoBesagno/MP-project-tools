@@ -1,4 +1,6 @@
 
+
+
 export class EntitaApi {
 
     verbo: string;
