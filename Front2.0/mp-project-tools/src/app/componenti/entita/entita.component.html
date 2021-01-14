@@ -1,1 +1,47 @@
 <p>entita works!</p>
+
+<div>
+  <label for="nomeEntita">Nome Entita: </label>
+  <input type="text" #nomeEntita id="nomeEntita">
+</div>
+<div>
+  <h1>Nuovo attributo</h1>
+  <div>
+      <label for="nomeAttributo">Nome Attributo: </label>
+      <input type="text" #nomeAttributo id="nomeAttributo">
+  </div>
+  <div>
+      <label for="tipologiaAttributo">Tipologia Attributo: </label>
+      <input type="text" #tipologiaAttributo id="tipologiaAttributo">
+  </div>
+  <div>
+      <label for="tipoAttributo">Tipo Attributo: </label>
+      <input type="text" #tipoAttributo id="tipoAttributo">
+  </div>
+  <div>
+      <label for="tiopoEntita">Tipo Entita: </label>
+      <input type="text" #tiopoEntita  id="tiopoEntita">
+  </div>
+
+  <button (click)="AggiungiAttributo()">Aggiungi</button>
+</div>
+
+  <button (click)="AggiungiEntita()">Aggiungi</button>
+<div *ngFor="let item of listaAttributi">
+  <div>
+      <label for="">Nome Attributo: </label>
+      <input type="text" >
+  </div>
+  <div>
+      <label for="">Tipologia Attributo: </label>
+      <input type="text">
+  </div>
+  <div>
+      <label for="">Tipo Attributo: </label>
+      <input type="text">
+  </div>
+  <div>
+      <label for="">Tipo Entita: </label>
+      <input type="text" value="">
+  </div>
+</div>
