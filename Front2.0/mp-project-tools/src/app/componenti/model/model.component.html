@@ -1,0 +1,28 @@
+<p>model works!</p>
+
+<div>
+    <label for="nome">Nome: </label>
+    <input type="text" [value]="nome" class="form-control" (input)='nome= $event.target.value'>>
+</div>
+
+<div>
+    <label for="testoRisultato">Testo Risultato: </label>
+    
+    <textarea id="testo" name="testo" rows="10" cols="50">
+        {{testoRisultato}}
+    </textarea>
+    <!-- <input type="text" [value]="testoRisultato" class="form-control" (input)='testoRisultato= $event.target.value'> -->
+</div>
+
+<h1>Elenco attributi model : </h1>
+<div *ngFor="let item of listaAttributi">
+    <div>
+        <label for="">Nome Attributo: </label>
+        <input type="text" value="{{item.nome}}">
+    </div>
+    <div>
+        <label for="">Testo: </label>
+        <input type="text" value="{{item.testoRisultato}}">
+
+    </div>
+</div>

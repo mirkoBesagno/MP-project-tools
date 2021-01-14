@@ -1,14 +1,66 @@
-<p>progetto works!</p>
-<div>
-    <label for="nomeProgetto">Nome progetto: </label>
-    <input type="text" #nomeProgetto id="nomeProgetto">
-</div>
-<div>
-    <label for="pathProgetto">Percorso progetto: </label>
-    <input type="text" #pathProgetto id="pathProgetto">
-</div>
-<button (click)="CreaProgetto()">Genera</button>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <p>progetto works!</p>
+            <div>
+                <label for="nomeProgetto">Nome progetto: </label>
+                <input [value]="nomeProgetto" class="form-control" (input)='nomeProgetto= $event.target.value'>
+            </div>
+            <div>
+                <label for="pathProgetto">Percorso progetto: </label>
+                <input [value]="pathProgetto" class="form-control" (input)='pathProgetto= $event.target.value'>
+            </div>
+            <button (click)="CreaProgetto()">Genera</button>
+            <ng-container *ngIf="esisteProgetto==false else elseTemplate">
+                progetto da creare
+            </ng-container>
+            <ng-template #elseTemplate>
+                progetto creato
+            </ng-template>
+        </div>
+        <div class="col-sm">
+            <app-entita (newEntita)="addEntita($event)"></app-entita>
+        </div>
 
-<app-entita></app-entita>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <p>Struttura progetto</p>
+
+            <p>typeorm</p>
+            <div *ngFor="let item of controller; let i=index">
+                <app-controller [Controller]="item"></app-controller>
+            </div>
+            <div *ngFor="let item of model">
+                <app-controller [Model]="item"></app-controller>
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+</div>
+
+
+
+
+<!--  -->
+
+<app-repository></app-repository>
+
+<app-view></app-view>
+
+<app-model></app-model>
+
+<app-interfaces></app-interfaces>
+
+<!-- ***************************************************************************************** -->
+
+<p>express</p>
+
+<app-api></app-api>
+
+<app-middleware></app-middleware>
+
+<app-interfaces></app-interfaces>
 
 <p>fine progetto!</p>

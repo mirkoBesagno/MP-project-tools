@@ -2,46 +2,53 @@
 
 <div>
   <label for="nomeEntita">Nome Entita: </label>
-  <input type="text" #nomeEntita id="nomeEntita">
+  <input type="text" [value]="nomeEntita" class="form-control" (input)='nomeEntita= $event.target.value'>
 </div>
 <div>
-  <h1>Nuovo attributo</h1>
+  <label for="tiopoEntita">Tipo Entita: </label>
+  <input type="text" [value]="tiopoEntita" class="form-control" (input)='tiopoEntita= $event.target.value'>
+</div>
+<div>
+  <p>Nuovo attributo</p>
   <div>
-      <label for="nomeAttributo">Nome Attributo: </label>
-      <input type="text" #nomeAttributo id="nomeAttributo">
+    <label for="nomeAttributo">Nome Attributo: </label>
+    <input type="text" [value]="nomeAttributo" class="form-control" (input)='nomeAttributo= $event.target.value'>
   </div>
   <div>
-      <label for="tipologiaAttributo">Tipologia Attributo: </label>
-      <input type="text" #tipologiaAttributo id="tipologiaAttributo">
+    <label for="tipologiaAttributo">Tipologia Attributo: </label>
+    <input type="text" [value]="tipologiaAttributo" class="form-control"
+      (input)='tipologiaAttributo= $event.target.value'>
   </div>
   <div>
-      <label for="tipoAttributo">Tipo Attributo: </label>
-      <input type="text" #tipoAttributo id="tipoAttributo">
+    <label for="tipoAttributo">Tipo Attributo: </label>
+    <input type="text" [value]="tipoAttributo" class="form-control" (input)='tipoAttributo= $event.target.value'>
   </div>
-  <div>
-      <label for="tiopoEntita">Tipo Entita: </label>
-      <input type="text" #tiopoEntita  id="tiopoEntita">
-  </div>
-
-  <button (click)="AggiungiAttributo()">Aggiungi</button>
+  <button (click)="AggiungiAttributo()">Aggiungi Attributo</button>
 </div>
 
-  <button (click)="AggiungiEntita()">Aggiungi</button>
-<div *ngFor="let item of listaAttributi">
-  <div>
+<button (click)="AggiungiEntita()">Aggiungi Entita</button>
+<p>Elenco attributi : </p>
+
+<div style="
+width: 100%;
+height: 200px;
+    overflow: Auto;
+    scrollbar-base-color: #000000;
+    scrollbar-arrow-color: #CCCCCC;
+    scrollbar-track-color: #CCCCCC; ">
+  <div *ngFor="let item of listaAttributi; let i=index">
+    <div>
       <label for="">Nome Attributo: </label>
-      <input type="text" >
-  </div>
-  <div>
-      <label for="">Tipologia Attributo: </label>
-      <input type="text">
-  </div>
-  <div>
+      <input type="text" value="{{item.nomeAttributo}}">
+    </div>
+    <div>
       <label for="">Tipo Attributo: </label>
-      <input type="text">
+      <input type="text" value="{{item.tipoAttributo}}">
+    </div>
+    <div>
+      <label for="">Tipologia Entita: </label>
+      <input type="text" value="{{item.tipologia}}">
+    </div>
   </div>
-  <div>
-      <label for="">Tipo Entita: </label>
-      <input type="text" value="">
-  </div>
+
 </div>
