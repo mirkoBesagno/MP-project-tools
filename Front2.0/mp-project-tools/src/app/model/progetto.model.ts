@@ -56,7 +56,17 @@ export class ProgettoModel {
   }
 
   AggiungiEntita(item: Entita) {
-    this.listaEntita.push(item);
+    let trovato: boolean = false;
+    this.listaEntita.forEach(element => {
+      if (element.nomeEntita == item.nomeEntita) {
+        trovato = true;
+        element.tiopoEntita=item.tiopoEntita;
+        element.AggiungiAttributi(item.listaAttributi);
+      }
+    });
+    if (!trovato) {
+      this.listaEntita.push(item);
+    }
   }
   GetListaNomiEntita(): string[] {
     let vett: string[] = [];

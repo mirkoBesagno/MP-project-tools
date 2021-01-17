@@ -23,6 +23,8 @@ export class ProgettoComponent implements AfterViewInit {
 
 listaEntita:string[]=[];
 
+entitaSelezionata:Entita;
+
   static progetto: ProgettoModel;
   constructor() {
     this.nomeProgetto = "";
@@ -53,6 +55,14 @@ listaEntita:string[]=[];
     );
     ProgettoComponent.progetto.AggiungiEntita(item);
     this.listaEntita=ProgettoComponent.progetto.GetListaNomiEntita();
+    
+  }
+  selezionaEntita(nome:string){
+    ProgettoComponent.progetto.listaEntita.forEach(element => {
+      if (element.nomeEntita==nome) {
+        this.entitaSelezionata = element;        
+      }
+    });
   }
   /* AggiungiEntita() {
 

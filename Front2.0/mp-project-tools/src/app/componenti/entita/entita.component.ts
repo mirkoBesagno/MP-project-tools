@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AttributoModel, TipoAttributo, TipologiaAttributo, TipologiaEntita } from '../../model/typeorm/model/Model';
 import { ProgettoComponent } from '../progetto/progetto.component';
 
 export class Entita {
 
-  
-  
+
+
   constructor(nome: string, tipo: string) {
-    this.nomeEntita=nome;
-    this.tiopoEntita=tipo;
+    this.nomeEntita = nome;
+    this.tiopoEntita = tipo;
   }
 
 
@@ -16,6 +16,23 @@ export class Entita {
   nomeEntita: string;
 
   listaAttributi: AttributoModel[] = [];
+
+  AggiungiAttributo(item: AttributoModel) {
+    let trovato :boolean =false;
+    this.listaAttributi.forEach(element => {
+      if (item.nomeAttributo == element.nomeAttributo) {
+        trovato=true;
+      }
+    });
+    if (!trovato) {
+      this.listaAttributi.push(item);
+    } 
+  }
+  AggiungiAttributi(item: AttributoModel[]){
+    item.forEach(element => {
+      this.AggiungiAttributo(element);
+    });
+  }
 }
 
 @Component({
@@ -44,12 +61,24 @@ export class EntitaComponent implements AfterViewInit {
     this.tipoAttributo = "int";
     this.tipologiaAttributo = "altro";
   }
+  private _entita: Entita;
+
+  @Input() set entita(item: Entita) {
+    this._entita = item;
+
+    this.nomeEntita = item.nomeEntita;
+
+    this.tiopoEntita = item.tiopoEntita;
+    this.listaAttributi = item.listaAttributi;
+  }
 
   ngAfterViewInit(): void {
 
   }
   /* ngOnInit(): void {
   } */
+
+
 
   @Output() newEntita = new EventEmitter<Entita>();
   AggiungiEntita() {
@@ -63,7 +92,7 @@ export class EntitaComponent implements AfterViewInit {
 
     t.listaAttributi = this.listaAttributi;
     this.newEntita.emit(t);
-this.nomiEntita = ProgettoComponent.progetto.GetListaNomiEntita();
+    this.nomiEntita = ProgettoComponent.progetto.GetListaNomiEntita();
     this.nomeAttributo = "";
     this.nomeEntita = "";
 
@@ -86,9 +115,9 @@ this.nomiEntita = ProgettoComponent.progetto.GetListaNomiEntita();
     this.listaAttributi.push(new AttributoModel(this.nomeAttributo,
       this.tipoAttributo,
       this.tipologiaAttributo));
-      this.tipoAttributo="";
-      this.tipologiaAttributo="";
-      this.nomeAttributo="";
+    this.tipoAttributo = "";
+    this.tipologiaAttributo = "";
+    this.nomeAttributo = "";
 
   }
   ModificaTipologiaEntita(item: string) {
@@ -174,7 +203,22 @@ this.nomiEntita = ProgettoComponent.progetto.GetListaNomiEntita();
 
     }
   }
-  GetListaEntita():string[] {
+  GetListaEntita(): string[] {
     return ProgettoComponent.progetto.GetListaNomiEntita();
+  }
+  PulisciProgetto(){
+    this.tiopoEntita="";
+    this.nomeEntita="";
+  
+    this.listaAttributi = [];
+  
+    this.tipoAttributo="";
+    this.tipologiaAttributo="";
+    this.nomeAttributo="";
+
+  }
+  RicaricaEntita(){
+    this.entita=this._entita;
+    
   }
 }
