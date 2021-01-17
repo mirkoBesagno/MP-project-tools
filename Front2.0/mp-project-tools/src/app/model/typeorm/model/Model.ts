@@ -1,6 +1,14 @@
 import { EntitaCartella } from "../../entity/EntitaCartella";
 import { EntitaTypeorm } from "../../entity/EntitaTypeorm";
-
+export enum TipologiaEntita{
+    entita, attore
+}
+export enum TipologiaAttributo{
+    forkey, vettore, altro
+}
+export enum TipoAttributo {
+    varchar, text, int32, decimal, data, timestamp, boolean
+}
 export class AttributoModel {
     nomeAttributo: string;
     tipologia: string;
@@ -12,8 +20,14 @@ export class AttributoModel {
         this.tipologia = tipologia;
         this.testo = "";
     }
+    GetTipologia(){
+        return this.tipologia;
+    }
+    GetTipo(){
+        return this.tipoAttributo;
+    }
     GetTesto(): string {
-        return " |--nomeAtt: "+this.nomeAttributo+"  |--tipologia: "+this.tipologia+"  |--testo "+this.testo+" |--\n";
+        return " |--nomeAtt: " + this.nomeAttributo + "  |--tipologia: " + this.tipologia + "  |--testo " + this.testo + " |--\n";
     }
 }
 

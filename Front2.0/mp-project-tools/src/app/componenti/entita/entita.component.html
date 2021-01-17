@@ -1,53 +1,128 @@
-<p>entita works!</p>
+<p class="testoPiccolo">entita works!</p>
+<div style="background-color: cadetblue;">
 
-<div>
-  <label for="nomeEntita">Nome Entita: </label>
-  <input type="text" [value]="nomeEntita" class="form-control" (input)='nomeEntita= $event.target.value'>
-</div>
-<div>
-  <label for="tiopoEntita">Tipo Entita: </label>
-  <input type="text" [value]="tiopoEntita" class="form-control" (input)='tiopoEntita= $event.target.value'>
-</div>
-<div>
-  <p>Nuovo attributo</p>
-  <div>
-    <label for="nomeAttributo">Nome Attributo: </label>
-    <input type="text" [value]="nomeAttributo" class="form-control" (input)='nomeAttributo= $event.target.value'>
-  </div>
-  <div>
-    <label for="tipologiaAttributo">Tipologia Attributo: </label>
-    <input type="text" [value]="tipologiaAttributo" class="form-control"
-      (input)='tipologiaAttributo= $event.target.value'>
-  </div>
-  <div>
-    <label for="tipoAttributo">Tipo Attributo: </label>
-    <input type="text" [value]="tipoAttributo" class="form-control" (input)='tipoAttributo= $event.target.value'>
-  </div>
-  <button (click)="AggiungiAttributo()">Aggiungi Attributo</button>
-</div>
+  <div class="row">
 
-<button (click)="AggiungiEntita()">Aggiungi Entita</button>
-<p>Elenco attributi : </p>
-
-<div style="
-width: 100%;
-height: 200px;
-    overflow: Auto;
-    scrollbar-base-color: #000000;
-    scrollbar-arrow-color: #CCCCCC;
-    scrollbar-track-color: #CCCCCC; ">
-  <div *ngFor="let item of listaAttributi; let i=index">
-    <div>
-      <label for="">Nome Attributo: </label>
-      <input type="text" value="{{item.nomeAttributo}}">
+    <div class="col-sm">
+      <div>
+        <label class="testoPiccolo" for="nomeEntita ">Nome Entita:
+          <input type="text" [value]="nomeEntita" class="form-control testoPiccolo"
+            (input)='nomeEntita= $event.target.value'>
+        </label>
+      </div>
     </div>
-    <div>
-      <label for="">Tipo Attributo: </label>
-      <input type="text" value="{{item.tipoAttributo}}">
+
+    <div class="col-sm">
+      <div>
+        <label class="testoPiccolo" for="tiopoEntita">Tipologia Entita:
+          <div class="dropdown">
+            <input type="text" [value]="tiopoEntita" (input)='tiopoEntita= $event.target.value'
+              class="dropdown-toggle form-control testoPiccolo" type=text id="listaTipiEntita" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu" aria-labelledby="listaTipiEntita">
+              <a class="dropdown-item" (click)="ModificaTipologiaEntita('entita')">1: e : entita</a>
+              <a class="dropdown-item" (click)="ModificaTipologiaEntita('attore')">2 : a : attore</a>
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
-    <div>
-      <label for="">Tipologia Entita: </label>
-      <input type="text" value="{{item.tipologia}}">
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm">
+      <p class="testoPiccolo">Nuovo attributo</p>
+      <div>
+        <label class="testoPiccolo" for="nomeAttributo">Nome Attributo:
+          <input type="text" [value]="nomeAttributo" class="form-control testoPiccolo"
+            (input)='nomeAttributo= $event.target.value'></label>
+      </div>
+      <div>
+        <label class="testoPiccolo" for="tipologiaAttributo">Tipologia Attributo:
+          <div class="dropdown testoPiccolo">
+            <input type="text" [value]="tipologiaAttributo" (input)='tipologiaAttributo= $event.target.value'
+              class="dropdown-toggle form-control testoPiccolo" type=text id="dropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="ModificaTipologia('forkey')">1: f : forkey</a>
+              <a class="dropdown-item" (click)="ModificaTipologia('vettore')">2 : v : vettore</a>
+              <a class="dropdown-item" (click)="ModificaTipologia('altro')">3 : a : altro</a>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div>
+        <ng-container *ngIf="tipologiaAttributo == 'altro' || tipologiaAttributo == '2'; else elseTemplate">
+          <label class="testoPiccolo" for="tipoAttributo">Tipo Attributo:
+            <div class="dropdown">
+              <input type="text" [value]="tipoAttributo" (input)='tipoAttributo= $event.target.value'
+                class="dropdown-toggle form-control testoPiccolo" type=text id="typeMenu" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-menu" aria-labelledby="typeMenu">
+                <a class="dropdown-item" (click)="ModificaTipo('varchar')">1 : v : varchar</a>
+                <a class="dropdown-item" (click)="ModificaTipo('text')">2 : tx : text</a>
+
+                <a class="dropdown-item" (click)="ModificaTipo('int32')">3 : i : int32</a>
+                <a class="dropdown-item" (click)="ModificaTipo('decimal')">4 : de : decimal</a>
+
+                <a class="dropdown-item" (click)="ModificaTipo('data')">5 : da : data</a>
+                <a class="dropdown-item" (click)="ModificaTipo('timestamp')">6 : ts : timestamp</a>
+
+                <a class="dropdown-item" (click)="ModificaTipo('boolean')">7 : b : boolean</a>
+              </div>
+            </div>
+          </label>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <label class="testoPiccolo" for="tipoAttributo">Tipo Attributo:
+            <div class="dropdown">
+              <input type="text" [value]="tipoAttributo" (input)='tipoAttributo= $event.target.value'
+                class="dropdown-toggle form-control testoPiccolo" type=text id="typeMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-menu" aria-labelledby="typeMenu2">
+                <a *ngFor="let item of nomiEntita" class="dropdown-item" (click)="ModificaTipo(item)">{{item}}</a>
+              </div>
+            </div>
+          </label>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <span>
+        <button class="testoPiccolo" (click)="AggiungiAttributo()">Aggiungi Attributo</button>
+      </span>
+      <span>
+        <button class="testoPiccolo" (click)="AggiungiEntita()">Aggiungi Entita</button>
+      </span>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm">
+
+      <label class="testoPiccolo">Elenco attributi : </label>
+
+      <div style="width: 100%; height: 200px; overflow: Auto; scrollbar-base-color: #000000; 
+        scrollbar-arrow-color: #CCCCCC; scrollbar-track-color: #CCCCCC; ">
+        <div *ngFor="let item of listaAttributi; let i=index">
+          <div>
+            <label class="testoPiccolo" for="">Nome Attributo:
+              <input type="text" value="{{item.nomeAttributo}}"></label>
+          </div>
+          <div>
+            <label class="testoPiccolo" for="">Tipo Attributo:
+              <input type="text" value="{{item.GetTipo()}}"></label>
+          </div>
+          <div>
+            <label class="testoPiccolo" for="">Tipologia Attributo:
+              <input type="text" value="{{item.GetTipologia()}}"></label>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

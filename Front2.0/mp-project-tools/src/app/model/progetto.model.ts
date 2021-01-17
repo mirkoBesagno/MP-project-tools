@@ -1,3 +1,4 @@
+import { Entita } from "../componenti/entita/entita.component";
 import { Configurazione } from "./Configurazione";
 import { EnvVar } from "./EnvVar";
 import { Express } from "./express/Express";
@@ -8,6 +9,8 @@ import { TypeORM } from "./typeorm/TypeORM";
 
 
 export class ProgettoModel {
+  listaEntita: Entita[] = [];
+
   typeorm: TypeORM;
   express: Express;
   configurazione: Configurazione;
@@ -50,6 +53,19 @@ export class ProgettoModel {
     this.env.Salva();
     this.package.Salva();
     this.tsconfig.Salva();
+  }
+
+  AggiungiEntita(item: Entita) {
+    this.listaEntita.push(item);
+  }
+  GetListaNomiEntita(): string[] {
+    let vett: string[] = [];
+    for (let index = 0; index < this.listaEntita.length; index++) {
+      const element = this.listaEntita[index];
+      vett.push(element.nomeEntita);
+
+    }
+    return vett;
   }
 }
 

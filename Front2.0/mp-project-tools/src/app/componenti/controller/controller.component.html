@@ -1,28 +1,27 @@
 <p>controller works!</p>
 
 <div>
-    <label for="nome">Nome: </label>
-    <input type="text" [value]="nome" class="form-control" (input)='nome= $event.target.value'>>
+    <label style="font-size: xx-small;" for="nome">Nome: </label>
+    <input style="font-size: xx-small;" type="text" [value]="nome" class="form-control" (input)='nome= $event.target.value'>
 </div>
 
 <div>
-    <label for="testoRisultato">Testo Risultato: </label>
+    <p style="font-size: xx-small;" for="testoRisultato">Testo Risultato: </p>
     
-    <textarea id="testo" name="testo" rows="10" cols="50">
+    <textarea style="font-size: xx-small;" id="testo" name="testo" rows="10" cols="50">
         {{testoRisultato}}
     </textarea>
     <!-- <input type="text" [value]="testoRisultato" class="form-control" (input)='testoRisultato= $event.target.value'> -->
 </div>
 
-<p>Elenco attributi controller : </p>
+<p style="font-size: xx-small;">Elenco attributi controller : </p>
 <div *ngFor="let item of attributi">
     <div>
-        <label for="">Nome Attributo: </label>
-        <input type="text" value="{{item.nome}}">
+        <label style="font-size: xx-small;" for="">Nome Attributo: </label>
+        <input style="font-size: xx-small;" type="text" value="{{item.nome}}">
     </div>
     <div>
-        <label for="">Tipologia Attributo: </label>
-        <input type="text" value="{{item.testo}}">
-
+        <label style="font-size: xx-small;" for="">Tipologia Attributo: </label>
+        <input style="font-size: xx-small;" type="text" value="{{item.testo}}">
     </div>
 </div>
