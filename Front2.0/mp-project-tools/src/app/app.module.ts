@@ -12,6 +12,7 @@ import { RepositoryComponent } from './componenti/repository/repository.componen
 import { ViewComponent } from './componenti/view/view.component';
 import { ApiComponent } from './componenti/api/api.component';
 import { MiddlewareComponent } from './componenti/middleware/middleware.component';
+import { DiagraMermaidComponent } from './componenti/diagra-mermaid/diagra-mermaid.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MiddlewareComponent } from './componenti/middleware/middleware.componen
     ViewComponent,
     ApiComponent,
     MiddlewareComponent,
+    DiagraMermaidComponent,
   ],
   imports: [
     BrowserModule

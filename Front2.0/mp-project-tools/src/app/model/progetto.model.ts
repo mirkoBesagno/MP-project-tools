@@ -40,6 +40,7 @@ export class ProgettoModel {
     this.env = new EnvVar(this.path);
     this.package = new Package(this.path, this.nome);
     this.tsconfig = new Tsconfig(this.path);
+
   }
 
   Salva() {
@@ -60,13 +61,20 @@ export class ProgettoModel {
     this.listaEntita.forEach(element => {
       if (element.nomeEntita == item.nomeEntita) {
         trovato = true;
-        element.tiopoEntita=item.tiopoEntita;
+        element.tiopoEntita = item.tiopoEntita;
         element.AggiungiAttributi(item.listaAttributi);
       }
     });
     if (!trovato) {
       this.listaEntita.push(item);
     }
+  }
+  GetEntitaPerDiagrammaEr() {
+    let testo: string = "";
+    this.listaEntita.forEach(element => {
+      testo = testo + element.GetPerDiagrammaER();
+    });
+    return testo;
   }
   GetListaNomiEntita(): string[] {
     let vett: string[] = [];

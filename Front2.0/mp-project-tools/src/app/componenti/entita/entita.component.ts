@@ -18,20 +18,39 @@ export class Entita {
   listaAttributi: AttributoModel[] = [];
 
   AggiungiAttributo(item: AttributoModel) {
-    let trovato :boolean =false;
+    let trovato: boolean = false;
     this.listaAttributi.forEach(element => {
       if (item.nomeAttributo == element.nomeAttributo) {
-        trovato=true;
+        trovato = true;
       }
     });
     if (!trovato) {
       this.listaAttributi.push(item);
-    } 
+    }
   }
-  AggiungiAttributi(item: AttributoModel[]){
+  AggiungiAttributi(item: AttributoModel[]) {
     item.forEach(element => {
       this.AggiungiAttributo(element);
     });
+  }
+  GetPerDiagrammaER() {
+    let ritorno: string ="";
+    this.listaAttributi.forEach(element => {
+      switch (element.tipologia) {
+        case "forkey":
+          ritorno = ritorno + "</br>" + element.tipoAttributo + "--|>" + this.nomeEntita;
+          break;
+        case "vettore":
+          ritorno = ritorno + "</br>" + this.nomeEntita + "--|>" + element.tipoAttributo;
+          break;
+        case "altro":
+          break;
+
+        default:
+          break;
+      }
+    });
+    return ritorno;
   }
 }
 
@@ -88,7 +107,7 @@ export class EntitaComponent implements AfterViewInit {
     ); */
 
 
-    const t: Entita = new Entita(this.nomeEntita, this.tipoAttributo);
+    const t: Entita = new Entita(this.nomeEntita, this.tiopoEntita);
 
     t.listaAttributi = this.listaAttributi;
     this.newEntita.emit(t);
@@ -206,19 +225,19 @@ export class EntitaComponent implements AfterViewInit {
   GetListaEntita(): string[] {
     return ProgettoComponent.progetto.GetListaNomiEntita();
   }
-  PulisciProgetto(){
-    this.tiopoEntita="";
-    this.nomeEntita="";
-  
+  PulisciProgetto() {
+    this.tiopoEntita = "";
+    this.nomeEntita = "";
+
     this.listaAttributi = [];
-  
-    this.tipoAttributo="";
-    this.tipologiaAttributo="";
-    this.nomeAttributo="";
+
+    this.tipoAttributo = "";
+    this.tipologiaAttributo = "";
+    this.nomeAttributo = "";
 
   }
-  RicaricaEntita(){
-    this.entita=this._entita;
-    
+  RicaricaEntita() {
+    this.entita = this._entita;
+
   }
 }
