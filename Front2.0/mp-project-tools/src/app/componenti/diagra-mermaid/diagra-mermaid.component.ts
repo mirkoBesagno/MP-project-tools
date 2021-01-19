@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Output, EventE
 import mermaid from 'mermaid';
 
 //const { htmlToText } = require('html-to-text');
-import {htmlToText} from "html-to-text";
+import { htmlToText } from "html-to-text";
 
 @Component({
   selector: 'app-diagra-mermaid',
@@ -16,13 +16,15 @@ export class DiagraMermaidComponent implements OnInit {
   @Input() set testoER(item: string) {
     this._testoEr = item;
 
-    mermaid.initialize(this.config);
+    mermaid.init(document.getElementById('t'));
+    //mermaid.initialize(this.config);
     const element: any = this.mermaidElement.nativeElement;
     const graphDefinition = htmlToText(item, {
       wordwrap: null
     });
     mermaid.render('graphDiv', graphDefinition, (svgCode,
       bindFunctions) => {
+      document.getElementById('t').innerHTML = svgCode;
       element.innerHTML = svgCode;
       bindFunctions(element);
     });
@@ -34,8 +36,6 @@ export class DiagraMermaidComponent implements OnInit {
   config = {
     startOnLoad: true,
     flowchart: {
-      useMaxWidth: true,
-      htmlLabels: true,
       curve: 'cardinal',
     },
     securityLevel: 'loose',
@@ -54,14 +54,14 @@ export class DiagraMermaidComponent implements OnInit {
 
   ngOnInit(): void {
 
-    mermaid.initialize(this.config);
+    /* mermaid.initialize(this.config);
     const element: any = this.mermaidElement.nativeElement;
     const graphDefinition =  this.testoProva;
     mermaid.render('graphDiv', graphDefinition, (svgCode,
       bindFunctions) => {
       element.innerHTML = svgCode;
       bindFunctions(element);
-    });
+    }); */
   }
 
 }

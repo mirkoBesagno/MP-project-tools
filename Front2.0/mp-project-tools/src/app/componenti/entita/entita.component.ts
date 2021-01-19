@@ -2,9 +2,15 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { AttributoModel, TipoAttributo, TipologiaAttributo, TipologiaEntita } from '../../model/typeorm/model/Model';
 import { ProgettoComponent } from '../progetto/progetto.component';
 
+export interface IEntita{
+
+  tiopoEntita: string;
+  nomeEntita: string;
+
+  listaAttributi: AttributoModel[];
+}
+
 export class Entita {
-
-
 
   constructor(nome: string, tipo: string) {
     this.nomeEntita = nome;
@@ -208,14 +214,19 @@ export class EntitaComponent implements AfterViewInit {
     else if (TipologiaAttributo[this.tipologiaAttributo] == TipologiaAttributo.forkey ||
       TipologiaAttributo[this.tipologiaAttributo] == TipologiaAttributo.vettore) {
       let trovato: boolean = false;
-      let vett = ProgettoComponent.progetto.GetListaNomiEntita();
+      let vett = ProgettoComponent.progetto.listaEntita;
       vett.forEach(element => {
-        if (element == item) {
+        if (element.nomeEntita == item) {
           trovato = true;
+          element.AggiungiAttributo(new AttributoModel(this.nomeAttributo, this.nomeEntita,
+            TipologiaAttributo[this.tipologiaAttributo] == TipologiaAttributo.forkey ? "vettore":"forkey"));
         }
       });
       if (!trovato) {
-        ProgettoComponent.progetto.AggiungiEntita(new Entita(item, "entita"));
+        var tmp = new Entita(item, "entita");
+        tmp.AggiungiAttributo(new AttributoModel(this.nomeAttributo, this.nomeEntita,
+          TipologiaAttributo[this.tipologiaAttributo] == TipologiaAttributo.forkey ? "vettore":"forkey"));
+        ProgettoComponent.progetto.AggiungiEntita(tmp);
       }
       this.tipoAttributo = item;
     } else {
