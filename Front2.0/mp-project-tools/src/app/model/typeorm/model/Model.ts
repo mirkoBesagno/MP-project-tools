@@ -10,11 +10,14 @@ export enum TipoAttributo {
     varchar, text, int32, decimal, data, timestamp, boolean
 }
 export class AttributoModel {
-    nomeAttributo: string;
-    tipologia: string;
-    tipoAttributo: string;
-    testo: string;
-    constructor(nomeAttributo: string, tipoAttributo: string, tipologia: string) {
+    nomeAttributo: string ="";
+    tipologia: string="";
+    tipoAttributo: string="";
+    testo: string="";
+    constructor(){
+
+    }
+    SettAttributo(nomeAttributo: string, tipoAttributo: string, tipologia: string) {
         this.nomeAttributo = nomeAttributo;
         this.tipoAttributo = tipoAttributo;
         this.tipologia = tipologia;

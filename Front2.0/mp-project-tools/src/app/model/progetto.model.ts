@@ -1,4 +1,5 @@
 import { Entita } from "../componenti/entita/entita.component";
+import { EntitaEr } from "../PrimoLivello/entita-er/EntitaEr";
 import { Configurazione } from "./Configurazione";
 import { EnvVar } from "./EnvVar";
 import { Express } from "./express/Express";
@@ -9,6 +10,8 @@ import { TypeORM } from "./typeorm/TypeORM";
 
 
 export class ProgettoModel {
+listaEntitaER: EntitaEr[]=[];
+
   listaEntita: Entita[] = [];
 
   typeorm: TypeORM;

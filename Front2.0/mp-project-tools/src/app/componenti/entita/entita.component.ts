@@ -131,9 +131,11 @@ export class EntitaComponent implements AfterViewInit {
   AggiungiAttributo() {
     this.ModificaTipologia(this.tipologiaAttributo);
     this.ModificaTipo(this.tipoAttributo);
-    this.listaAttributi.push(new AttributoModel(this.nomeAttributo,
+    var tmp = new AttributoModel();
+    tmp.SettAttributo(this.nomeAttributo,
       this.tipoAttributo,
-      this.tipologiaAttributo));
+      this.tipologiaAttributo);
+    this.listaAttributi.push(tmp);
     this.tipoAttributo = "";
     this.tipologiaAttributo = "";
     this.nomeAttributo = "";

@@ -13,6 +13,9 @@ import { ViewComponent } from './componenti/view/view.component';
 import { ApiComponent } from './componenti/api/api.component';
 import { MiddlewareComponent } from './componenti/middleware/middleware.component';
 import { DiagraMermaidComponent } from './componenti/diagra-mermaid/diagra-mermaid.component';
+import { EntitaERComponent } from './PrimoLivello/entita-er/entita-er.component';
+import { ProgettoERComponent } from './PrimoLivello/progetto-er/progetto-er.component';
+import { AttributoModelComponent } from './PrimoLivello/attributo-model/attributo-model.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { DiagraMermaidComponent } from './componenti/diagra-mermaid/diagra-merma
     ApiComponent,
     MiddlewareComponent,
     DiagraMermaidComponent,
+    EntitaERComponent,
+    ProgettoERComponent,
+    AttributoModelComponent,
   ],
   imports: [
     BrowserModule
