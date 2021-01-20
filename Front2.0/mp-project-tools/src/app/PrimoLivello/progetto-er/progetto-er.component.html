@@ -57,17 +57,17 @@
     style="padding: 0%; max-height: 50px; height: 30px; min-height: 30px; align-items: flex-end;">
 
     <div class="collapse navbar-collapse form-inline" style="padding: 0%;">
-        <button class="btn btn-sm btn-outline-secondary" type="button" [value]="item" *ngFor="let item of listaEntitaER"
+        <button class="btn btn-sm btn-outline-secondary" type="button" *ngFor="let item of listaEntitaER"
             (click)="entitaSelezionata = item">{{item.nomeEntita}}</button>
     </div>
 </nav>
-<div style="background-color: burlywood;">
-    <button (click)="AttivoTriggher()">Salva entita : {{TriggheraSalva}} </button>
-
-    <app-entita-er [triggheraSalva]="TriggheraSalva"></app-entita-er>
+<div>   
+    <p>Nuova entita</p> 
+    <app-entita-er [SetEntitaSelezionata]="nuovaEntita"></app-entita-er>
+    <button (click)="SalvaEntita()">Salva entita</button>
 </div>
 <div style="background-color: aquamarine;">
-    <app-entita-er [entitaSelezionata]="entitaSelezionata"></app-entita-er>
+    <app-entita-er [SetEntitaSelezionata]="entitaSelezionata"></app-entita-er>
 </div>
 <!-- 
 <div class="row">

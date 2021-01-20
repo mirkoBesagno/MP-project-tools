@@ -14,7 +14,7 @@ export class ProgettoERComponent implements OnInit {
   listaEntitaER: EntitaEr[] = []
   entitaSelezionata: EntitaEr = new EntitaEr();
   
-  TriggheraSalva:boolean=false;
+  nuovaEntita: EntitaEr= new EntitaEr();
   
   pathProgetto: string="";
   nomeProgetto: string="";
@@ -29,8 +29,10 @@ export class ProgettoERComponent implements OnInit {
     Utility.Progetto = new ProgettoModel(this.pathProgetto, this.nomeProgetto, new Date(Date.now()));
     this.listaEntitaER = Utility.Progetto.listaEntitaER;
   }
-  AttivoTriggher(){
-    this.TriggheraSalva = !this.TriggheraSalva;
+  SalvaEntita()
+  {
+    this.listaEntitaER.push(this.nuovaEntita);
+    this.nuovaEntita = new EntitaEr();
   }
 }
 

@@ -2,10 +2,17 @@
 <div>
 
     <label class="testoPiccolo" for="nomeEntita ">Nome Entita:
-        <input type="text" [value]="nomeEntita" class="testoPiccolo"
-            (input)='nomeEntita = $event.target.value'>
+        <input type="text" [value]="entitaSelezionata.nomeEntita" class="testoPiccolo"
+            (input)='entitaSelezionata.nomeEntita = $event.target.value'>
     </label>
 
+    <label class="testoPiccolo" for="tipoEntita ">Tipo Entita:
+        <select name="cars" id="tipoEntita" [value]="entitaSelezionata.tiopoEntita" class="testoPiccolo"
+            (input)='entitaSelezionata.tiopoEntita = $event.target.value'>
+            <option value="entita">entita</option>
+            <option value="attore">attore</option>
+        </select>
+    </label>
 </div>
 
 <p>nuovo attributo</p>
@@ -18,18 +25,30 @@
             <th>Nome</th>
         </tr>
         <tr>
-            <td> <label class="testoPiccolo" for="nomeEntita ">
-                <input type="text" [value]="attributoNuovo.tipologia" class="testoPiccolo"
-                    (input)='attributoNuovo.tipologia= $event.target.value'>
-            </label></td>
-            <td> <label class="testoPiccolo" for="nomeEntita ">
-                <input type="text" [value]="attributoNuovo.tipoAttributo" class="testoPiccolo"
-                    (input)='attributoNuovo.tipoAttributo= $event.target.value'>
-            </label></td>
-            <td> <label class="testoPiccolo" for="nomeEntita ">
-                <input type="text" [value]="attributoNuovo.nomeAttributo" class="testoPiccolo"
-                    (input)='attributoNuovo.nomeAttributo= $event.target.value'>
-            </label></td>
+            <td>
+                <select name="cars" id="tipoEntita" [value]="attributoNuovo.tipologia" class="testoPiccolo"
+                    (input)='ModificaTipologiaAttributoNuovo($event.target.value)'>
+                    <option value="fk">fk</option>
+                    <option value="vett">vett</option>
+                    <option value="altro">altro</option>
+                </select>
+            </td>
+            <td>
+                <label class="testoPiccolo" for="nomeEntita ">
+                    <input type="text" [value]="attributoNuovo.tipoAttributo" class="testoPiccolo"
+                        (input)='ModificaTipoAttributoNuovo($event.target.value)'>
+                    <select name="cars" id="tipoEntita" class="testoPiccolo"
+                        (input)='ModificaTipoAttributoNuovo($event.target.value)'>
+                        <option *ngFor="let item of possibilitaTipoAttributo">{{item}}</option>
+                    </select>
+                </label>
+            </td>
+            <td>
+                <label class="testoPiccolo" for="nomeEntita ">
+                    <input type="text" [value]="attributoNuovo.nomeAttributo" class="testoPiccolo"
+                        (input)='attributoNuovo.nomeAttributo= $event.target.value'>
+                </label>
+            </td>
         </tr>
     </table>
 </div>
@@ -40,7 +59,7 @@
             <th>Tipo</th>
             <th>Nome</th>
         </tr>
-        <tr *ngFor="let item of listaAttributi">
+        <tr *ngFor="let item of entitaSelezionata.listaAttributi">
             <td>{{item.tipologia}}</td>
             <td>{{item.tipoAttributo}}</td>
             <td>{{item.nomeAttributo}}</td>

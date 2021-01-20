@@ -10,37 +10,41 @@ import { EntitaEr } from './EntitaEr';
   templateUrl: './entita-er.component.html',
   styleUrls: ['./entita-er.component.css']
 })
-export class EntitaERComponent extends EntitaEr implements OnInit {
+export class EntitaERComponent implements OnInit {
+
+entitaSelezionata:EntitaEr= new EntitaEr();
 
   @Input()
-  set triggheraSalva(item: boolean) {
-    if (item === true) {
-      var tmp = new EntitaEr();
-      tmp.SettaEntita(this);
-      Utility.Progetto.listaEntitaER.push(tmp);
-      this.nomeEntita="",
-      this.listaAttributi=[];
-      this.tiopoEntita="";      
-    }
-  }
-
-  @Input()
-  set entitaSelezionata(item: EntitaEr) {
-    super.SettaEntita(item);
-    this.attributoNuovo = new AttributoModel();
+  set SetEntitaSelezionata(item: EntitaEr) {
+    this.entitaSelezionata= item;
   }
 
   attributoNuovo: AttributoModel = new AttributoModel();
 
+  ModificaTipologiaAttributoNuovo(item:string)
+  {
+    this.attributoNuovo.tipologia = item;
+    if (item == "fk" || "vett") {
+      this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntita();
+    }
+  }
+  possibilitaTipoAttributo: string[]=[];
+  ModificaTipoAttributoNuovo(item:string)
+  {
+    this.attributoNuovo.tipoAttributo = item;
+    if (this.attributoNuovo.tipologia == "fk" || "vett") {
+      this.attributoNuovo.nomeAttributo = this.attributoNuovo.tipologia+item.substring(0,1).toUpperCase()+item.substr(1);
+    }
+  }
+
   constructor() {
-    super();
   }
 
   ngOnInit(): void {
   }
 
   AggiungiAttributo() {
-    super.AggiungiAttributo(this.attributoNuovo);
+    this.entitaSelezionata.AggiungiAttributo(this.attributoNuovo);
     this.attributoNuovo = new AttributoModel();
   }
 }
