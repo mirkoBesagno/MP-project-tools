@@ -23,6 +23,12 @@ export class AttributoModel {
         this.tipologia = tipologia;
         this.testo = "";
     }
+    ModificaTipoAttributo(item: string) {
+        this.tipoAttributo = item;
+        if (this.tipologia == "fk" || this.tipologia == "vett" || this.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] || this.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
+          this.nomeAttributo = this.tipologia + item.substring(0, 1).toUpperCase() + item.substr(1);
+        }
+      }
     GetTipologia(){
         return this.tipologia;
     }

@@ -2,35 +2,44 @@ import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Output, EventE
 import mermaid from 'mermaid';
 
 //const { htmlToText } = require('html-to-text');
-import {htmlToText} from "html-to-text";
+import { htmlToText } from "html-to-text";
 
 @Component({
   selector: 'app-diagra-mermaid',
+  /* queries: {
+    mermaid: new ViewChild( "mermaid" )
+  }, */
   templateUrl: './diagra-mermaid.component.html',
   styleUrls: ['./diagra-mermaid.component.css']
 })
 export class DiagraMermaidComponent implements OnInit {
 
+  constructor() { }
   private _testoEr: string;
 
   @Input() set testoER(item: string) {
-    this._testoEr = item;
+    if (item != undefined && item != '') {
+      this._testoEr = item;
 
-    mermaid.initialize(this.config);
-    const element: any = this.mermaidElement.nativeElement;
-    const graphDefinition = htmlToText(item, {
-      wordwrap: null
-    });
-    mermaid.render('graphDiv', graphDefinition, (svgCode,
-      bindFunctions) => {
-      element.innerHTML = svgCode;
-      bindFunctions(element);
-    });
+      //mermaid.initialize(this.config);
+      const element: any = document.getElementById('graficoER');
+      const graphDefinition = htmlToText(item, {
+        wordwrap: null
+      });
+      try {
 
+        mermaid.render('graphDiv', graphDefinition, (svgCode,
+          bindFunctions) => {
+          element.innerHTML = svgCode;
+          bindFunctions(element);
+        });
+      } catch (error) {
+        console.log("ERRORE !!!! sono mirko : " + error);
+      }
+    }
   }
 
   // inside component file
-  @ViewChildren('mermaid') mermaidElement: ElementRef = new ElementRef("");
   config = {
     startOnLoad: true,
     flowchart: {
@@ -50,18 +59,10 @@ export class DiagraMermaidComponent implements OnInit {
   Class09 --> C2 : Where am i?
   Class09 --* C3`;
 
-  constructor() { }
 
   ngOnInit(): void {
 
     mermaid.initialize(this.config);
-    const element: any = this.mermaidElement.nativeElement;
-    const graphDefinition =  this.testoProva;
-    mermaid.render('graphDiv', graphDefinition, (svgCode,
-      bindFunctions) => {
-      element.innerHTML = svgCode;
-      bindFunctions(element);
-    });
   }
 
 }

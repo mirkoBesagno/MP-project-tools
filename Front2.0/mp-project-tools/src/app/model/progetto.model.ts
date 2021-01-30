@@ -74,7 +74,7 @@ listaEntitaER: EntitaEr[]=[];
   }
   GetEntitaPerDiagrammaEr() {
     let testo: string = "";
-    this.listaEntita.forEach(element => {
+    this.listaEntitaER.forEach(element => {
       testo = testo + element.GetPerDiagrammaER();
     });
     return testo;
@@ -85,6 +85,14 @@ listaEntitaER: EntitaEr[]=[];
       const element = this.listaEntita[index];
       vett.push(element.nomeEntita);
 
+    }
+    return vett;
+  }
+  GetListaNomiEntitaER(): string[] {
+    let vett: string[] = [];
+    for (let index = 0; index < this.listaEntitaER.length; index++) {
+      const element = this.listaEntitaER[index];
+      vett.push(element.nomeEntita);
     }
     return vett;
   }

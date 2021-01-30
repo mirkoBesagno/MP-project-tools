@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Entita } from 'src/app/componenti/entita/entita.component';
 import { AttributoModel } from 'src/app/model/typeorm/model/Model';
 import { AttributoModelComponent } from '../attributo-model/attributo-model.component';
-import { Utility } from '../progetto-er/progetto-er.component';
+import { Utility } from "../progetto-er/Utility";
 import { EntitaEr } from './EntitaEr';
 
 @Component({
@@ -12,28 +12,36 @@ import { EntitaEr } from './EntitaEr';
 })
 export class EntitaERComponent implements OnInit {
 
-entitaSelezionata:EntitaEr= new EntitaEr();
+  entitaSelezionata: EntitaEr = new EntitaEr();
+
+  abilitaNuovoAttributo
+  @Input()
+  set SetaMostraAttributo(item: boolean) {
+    this.abilitaNuovoAttributo = item;
+  }
 
   @Input()
   set SetEntitaSelezionata(item: EntitaEr) {
-    this.entitaSelezionata= item;
+    this.entitaSelezionata = item;
   }
 
   attributoNuovo: AttributoModel = new AttributoModel();
 
-  ModificaTipologiaAttributoNuovo(item:string)
-  {
+  ModificaTipologiaAttributoNuovo(item: string) {
     this.attributoNuovo.tipologia = item;
-    if (item == "fk" || "vett") {
-      this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntita();
+    if (item == "fk" || item ==  "vett") {
+      this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntitaER();
     }
   }
-  possibilitaTipoAttributo: string[]=[];
-  ModificaTipoAttributoNuovo(item:string)
-  {
+  ClickTipoAttribtuo(item: string){
+    this.attributoNuovo.tipoAttributo=item;
+    this.ModificaTipoAttributoNuovo(this.attributoNuovo.tipoAttributo);
+  }
+  possibilitaTipoAttributo: string[] = [];
+  ModificaTipoAttributoNuovo(item: string) {
     this.attributoNuovo.tipoAttributo = item;
-    if (this.attributoNuovo.tipologia == "fk" || "vett") {
-      this.attributoNuovo.nomeAttributo = this.attributoNuovo.tipologia+item.substring(0,1).toUpperCase()+item.substr(1);
+    if (this.attributoNuovo.tipologia == "fk" || this.attributoNuovo.tipologia == "vett") {
+      this.attributoNuovo.nomeAttributo = this.attributoNuovo.tipologia + item.substring(0, 1).toUpperCase() + item.substr(1);
     }
   }
 
@@ -46,5 +54,6 @@ entitaSelezionata:EntitaEr= new EntitaEr();
   AggiungiAttributo() {
     this.entitaSelezionata.AggiungiAttributo(this.attributoNuovo);
     this.attributoNuovo = new AttributoModel();
+    document.getElementById('tipologiaEntita').focus();
   }
 }

@@ -17,6 +17,10 @@ import { EntitaERComponent } from './PrimoLivello/entita-er/entita-er.component'
 import { ProgettoERComponent } from './PrimoLivello/progetto-er/progetto-er.component';
 import { AttributoModelComponent } from './PrimoLivello/attributo-model/attributo-model.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './material/MaterialModule';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { AttributoModelComponent } from './PrimoLivello/attributo-model/attribut
     AttributoModelComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
