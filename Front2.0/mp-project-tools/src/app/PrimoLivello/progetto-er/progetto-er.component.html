@@ -1,94 +1,59 @@
-<nav
-    class="navbar navbar-expand-sm navbar-light bg-light"
-    style="padding: 5px; max-height: 50px; height: 30px; min-height: 30px; align-items: baseline;"
->
+<nav class="navbar navbar-expand-sm navbar-light bg-light"
+    style="padding: 5px; max-height: 50px; height: 30px; min-height: 30px; align-items: baseline;">
 
 
 
 
-    <div
-        class="collapse navbar-collapse"
-        style="padding: 0%;"
-    >
+    <div class="collapse navbar-collapse" style="padding: 0%;">
         <!-- nome -->
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Nome progetto></span>
             </div>
-            <input
-                type="text"
-                class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm"
-                (input)='nomeProgetto= $event.target.value'
-                [value]="nomeProgetto"
-            >
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" (input)='nomeProgetto= $event.target.value'
+                [value]="nomeProgetto">
         </div>
         <!-- percorso -->
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Percorso progetto></span>
             </div>
-            <input
-                type="text"
-                class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm"
-                (input)='pathProgetto= $event.target.value'
-                [value]="pathProgetto"
-            >
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" (input)='pathProgetto= $event.target.value'
+                [value]="pathProgetto">
         </div>
         <!-- scelte -->
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
                 <!-- crea progetto -->
-                <button
-                    class="btn btn-sm btn-outline-success"
-                    type="button"
-                    (click)="CreaProgetto()"
-                >
+                <button class="btn btn-sm btn-outline-success" type="button" (click)="CreaProgetto()">
                     Genera
                     <ng-container *ngIf="esisteProgetto==false else elseTemplate">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-x-circle-fill"
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z">
+                            </path>
                         </svg>
                     </ng-container>
                     <ng-template #elseTemplate>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-check-circle"
-                            viewBox="0 0 16 16"
-                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-check-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
+                            <path
+                                d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z">
+                            </path>
                         </svg>
                     </ng-template>
                 </button>
                 <!-- genera ER -->
-                <button
-                    class="testoPiccolo btn btn-sm btn-outline-success"
-                    type="button"
-                    (click)="generaEr()"
-                >
+                <button class="testoPiccolo btn btn-sm btn-outline-success" type="button" (click)="generaEr()">
                     Genera ER
                 </button>
                 <!-- Button trigger modal -->
-                <button
-                    type="button"
-                    class="btn btn-sm btn-outline-success"
-                    data-toggle="modal"
-                    data-target="#aggiungiEntita"
-                >
+                <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
+                    data-target="#aggiungiEntita">
                     Aggiungi entita
                 </button>
             </div>
@@ -96,24 +61,15 @@
     </div>
 </nav>
 <!-- lista entita nel progetto -->
-<nav
-    class="navbar navbar-expand-sm navbar-light bg-light"
-    style="padding: 0%; max-height: 50px; height: 30px; min-height: 30px; align-items: flex-end;"
->
+<nav class="navbar navbar-expand-sm navbar-light bg-light"
+    style="padding: 0%; max-height: 50px; height: 30px; min-height: 30px; align-items: flex-end;">
 
 
 
 
-    <div
-        class="collapse navbar-collapse form-inline"
-        style="padding: 0%;"
-    >
-        <button
-            class="btn btn-sm btn-outline-secondary"
-            type="button"
-            *ngFor="let item of listaEntitaER"
-            (click)="AggiungiEntita(item)"
-        >
+    <div class="collapse navbar-collapse form-inline" style="padding: 0%;">
+        <button class="btn btn-sm btn-outline-secondary" type="button" *ngFor="let item of listaEntitaER"
+            (click)="AggiungiEntita(item)">
             {{item.nomeEntita}}
         </button>
     </div>
@@ -125,43 +81,22 @@
 
 
 <!-- Modal -->
-<div
-    class="modal fade"
-    id="aggiungiEntita"
-    tabindex="-1"
-    role="dialog"
-    aria-hidden="true"
-    aria-labelledby="nuovoAttributoLabel"
-    style="width: 100%"
->
-    <div
-        class="modal-dialog"
-        role="document"
-    >
+<div class="modal fade" id="aggiungiEntita" tabindex="-1" role="dialog" aria-hidden="true"
+    aria-labelledby="nuovoAttributoLabel" style="width: 100%">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5
-                    class="modal-title"
-                    id="exampleModalLabel"
-                >
+                <h5 class="modal-title" id="exampleModalLabel">
                     Modal title
                 </h5>
-                <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div>
                     <p>Nuova entita</p>
-                    <app-entita-er
-                        [SetEntitaSelezionata]="nuovaEntita"
-                        [SetaMostraAttributo]="true"
-                    ></app-entita-er>
+                    <app-entita-er [SetEntitaSelezionata]="nuovaEntita" [SetaMostraAttributo]="true"></app-entita-er>
                     <button (click)="SalvaEntita()">Salva entita</button>
                 </div>
             </div>
@@ -172,16 +107,10 @@
 
 <div class="row">
     <div class="col-3">
-        <mat-tab-group  [selectedIndex]="indiceEntitaSelezionata"
-        (selectedIndexChange)="indiceEntitaSelezionata = $event">
-            <mat-tab
-                label="{{item.nomeEntita}}"
-                *ngFor="let item of entitaSelezionate"
-            >
-                <app-entita-er
-                    [SetEntitaSelezionata]="item"
-                    [SetaMostraAttributo]="false"
-                ></app-entita-er>
+        <mat-tab-group [selectedIndex]="indiceEntitaSelezionata"
+            (selectedIndexChange)="indiceEntitaSelezionata = $event">
+            <mat-tab label="{{item.nomeEntita}}" *ngFor="let item of entitaSelezionate">
+                <app-entita-er [SetEntitaSelezionata]="item" [SetaMostraAttributo]="false"></app-entita-er>
             </mat-tab>
         </mat-tab-group>
     </div>

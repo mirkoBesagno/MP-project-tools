@@ -1,3 +1,4 @@
+import { IfStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Entita } from 'src/app/componenti/entita/entita.component';
 import { AttributoModel, TipologiaAttributo } from 'src/app/model/typeorm/model/Model';
@@ -49,6 +50,23 @@ export class EntitaERComponent implements OnInit {
   }
 
   constructor() {
+
+  }
+nomiEntita:string[]=[];
+  AggiornaEntita(){
+    this.nomiEntita=[];
+    for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
+      const element = Utility.Progetto.listaEntitaER[index];
+      this.nomiEntita.push(element.nomeEntita);
+    }
+  }
+  ClickSelezionaEntita(item:string){
+    for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
+      const element = Utility.Progetto.listaEntitaER[index];
+      if (element.nomeEntita == item) {
+        this.entitaSelezionata = element;
+      }
+    }
   }
 
   ngOnInit(): void {
