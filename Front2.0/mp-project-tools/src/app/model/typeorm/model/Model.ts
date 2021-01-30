@@ -6,6 +6,15 @@ export enum TipologiaEntita{
 export enum TipologiaAttributo{
     forkey, vettore, altro
 }
+
+export namespace TipologiaAttributo {
+
+    export function values() {
+      return Object.keys(TipologiaAttributo).filter(
+        (type) => isNaN(<any>type) && type !== 'values'
+      );
+    }
+  }
 export enum TipoAttributo {
     varchar, text, int32, decimal, data, timestamp, boolean
 }
@@ -25,7 +34,7 @@ export class AttributoModel {
     }
     ModificaTipoAttributo(item: string) {
         this.tipoAttributo = item;
-        if (this.tipologia == "fk" || this.tipologia == "vett" || this.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] || this.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
+        if (this.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] || this.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
           this.nomeAttributo = this.tipologia + item.substring(0, 1).toUpperCase() + item.substr(1);
         }
       }

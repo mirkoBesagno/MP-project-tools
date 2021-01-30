@@ -35,31 +35,44 @@ export class ProgettoERComponent implements OnInit {
   }
   SalvaEntita() {
     for (let index = 0; index < this.nuovaEntita.listaAttributi.length; index++) {
-      const attr = this.nuovaEntita.listaAttributi[index];
-      if (attr.tipologia == "vett" || attr.tipologia == "fk" || attr.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] ||
-       attr.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
+      const attributoNuovaEntita = this.nuovaEntita.listaAttributi[index];
+      if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] ||
+        attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
         var presente: boolean = false;
         for (let index = 0; index < this.listaEntitaER.length; index++) {
           const element = this.listaEntitaER[index];
-          if (element.nomeEntita == attr.tipoAttributo) {
+          if (element.nomeEntita == attributoNuovaEntita.tipoAttributo) {
             presente = true;
+            if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.vettore]) {
+              var attnew = new AttributoModel();
+              attnew.tipologia = TipologiaAttributo[TipologiaAttributo.forkey];
+              //attnew.tipoAttributo = entTmp.nomeEntita;
+              attnew.ModificaTipoAttributo(this.nuovaEntita.nomeEntita);
+            }
+            else if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
+              var attnew = new AttributoModel();
+              attnew.tipologia = TipologiaAttributo[TipologiaAttributo.vettore];
+              //attnew.tipoAttributo = entTmp.nomeEntita;
+              attnew.ModificaTipoAttributo(this.nuovaEntita.nomeEntita);
+            }
+            element.AggiungiAttributo(attnew);
           }
         }
         if (presente == false) {
           var entTmp = new EntitaEr();
-          entTmp.nomeEntita = attr.tipoAttributo;
+          entTmp.nomeEntita = attributoNuovaEntita.tipoAttributo;
           entTmp.tiopoEntita = TipologiaEntita[TipologiaEntita.entita];
-          if (attr.tipologia == "vett" || TipologiaAttributo[TipologiaAttributo.vettore]) {
+          if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.vettore]) {
             var attnew = new AttributoModel();
             attnew.tipologia = TipologiaAttributo[TipologiaAttributo.forkey];
             //attnew.tipoAttributo = entTmp.nomeEntita;
-            attnew.ModificaTipoAttributo(entTmp.nomeEntita);
+            attnew.ModificaTipoAttributo(this.nuovaEntita.nomeEntita);
           }
-          else if (attr.tipologia == "fk" || TipologiaAttributo[TipologiaAttributo.forkey]) {
+          else if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
             var attnew = new AttributoModel();
             attnew.tipologia = TipologiaAttributo[TipologiaAttributo.vettore];
             //attnew.tipoAttributo = entTmp.nomeEntita;
-            attnew.ModificaTipoAttributo(entTmp.nomeEntita);
+            attnew.ModificaTipoAttributo(this.nuovaEntita.nomeEntita);
           }
           entTmp.AggiungiAttributo(attnew);
           this.listaEntitaER.push(entTmp);
@@ -69,6 +82,7 @@ export class ProgettoERComponent implements OnInit {
     this.listaEntitaER.push(this.nuovaEntita);
     this.nuovaEntita = new EntitaEr();
   }
+  indiceEntitaSelezionata = 0;
   AggiungiEntita(item: EntitaEr) {
     let presente: boolean = false;
     this.entitaSelezionate.forEach(element => {
@@ -78,6 +92,12 @@ export class ProgettoERComponent implements OnInit {
     });
     if (!presente) {
       this.entitaSelezionate.push(item);
+    }
+    for (let index = 0; index < this.entitaSelezionate.length; index++) {
+      const element = this.entitaSelezionate[index];
+      if (element.nomeEntita == item.nomeEntita) {
+        this.indiceEntitaSelezionata = index;
+      }
     }
   }
 

@@ -169,11 +169,13 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-3">
-        <mat-tab-group>
+        <mat-tab-group  [selectedIndex]="indiceEntitaSelezionata"
+        (selectedIndexChange)="indiceEntitaSelezionata = $event">
             <mat-tab
-                label="item.nomeEntita"
+                label="{{item.nomeEntita}}"
                 *ngFor="let item of entitaSelezionate"
             >
                 <app-entita-er

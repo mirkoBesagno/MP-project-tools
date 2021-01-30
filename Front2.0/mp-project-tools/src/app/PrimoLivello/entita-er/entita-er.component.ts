@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Entita } from 'src/app/componenti/entita/entita.component';
-import { AttributoModel } from 'src/app/model/typeorm/model/Model';
+import { AttributoModel, TipologiaAttributo } from 'src/app/model/typeorm/model/Model';
 import { AttributoModelComponent } from '../attributo-model/attributo-model.component';
 import { Utility } from "../progetto-er/Utility";
 import { EntitaEr } from './EntitaEr';
@@ -11,6 +11,8 @@ import { EntitaEr } from './EntitaEr';
   styleUrls: ['./entita-er.component.css']
 })
 export class EntitaERComponent implements OnInit {
+
+  TipologiaAttributo = TipologiaAttributo;
 
   entitaSelezionata: EntitaEr = new EntitaEr();
 
@@ -29,7 +31,7 @@ export class EntitaERComponent implements OnInit {
 
   ModificaTipologiaAttributoNuovo(item: string) {
     this.attributoNuovo.tipologia = item;
-    if (item == "fk" || item ==  "vett") {
+    if (item == TipologiaAttributo[TipologiaAttributo.vettore] || item ==  TipologiaAttributo[TipologiaAttributo.forkey]) {
       this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntitaER();
     }
   }
@@ -40,7 +42,8 @@ export class EntitaERComponent implements OnInit {
   possibilitaTipoAttributo: string[] = [];
   ModificaTipoAttributoNuovo(item: string) {
     this.attributoNuovo.tipoAttributo = item;
-    if (this.attributoNuovo.tipologia == "fk" || this.attributoNuovo.tipologia == "vett") {
+    if (this.attributoNuovo.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] ||
+       this.attributoNuovo.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
       this.attributoNuovo.nomeAttributo = this.attributoNuovo.tipologia + item.substring(0, 1).toUpperCase() + item.substr(1);
     }
   }

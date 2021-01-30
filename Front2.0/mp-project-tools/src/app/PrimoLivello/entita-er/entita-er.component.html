@@ -50,9 +50,7 @@
                             class="testoPiccolo custom-select"
                             (input)='ModificaTipologiaAttributoNuovo($event.target.value)'
                         >
-                            <option value="fk">fk</option>
-                            <option value="vett">vett</option>
-                            <option value="altro">altro</option>
+                            <option *ngFor="let item of TipologiaAttributo.values()" value="{{item}}">{{item}}</option>
                         </select>
                     </td>
                     <td>
