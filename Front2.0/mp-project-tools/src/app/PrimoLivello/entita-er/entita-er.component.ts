@@ -55,9 +55,15 @@ export class EntitaERComponent implements OnInit {
 nomiEntita:string[]=[];
   AggiornaEntita(){
     this.nomiEntita=[];
+    try {
+      
     for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
       const element = Utility.Progetto.listaEntitaER[index];
       this.nomiEntita.push(element.nomeEntita);
+    }
+    } catch (error) {
+      console.log("Errore : "+error);
+      
     }
   }
   ClickSelezionaEntita(item:string){
@@ -65,9 +71,11 @@ nomiEntita:string[]=[];
       const element = Utility.Progetto.listaEntitaER[index];
       if (element.nomeEntita == item) {
         this.entitaSelezionata = element;
+        this.newEntitaSelezionata.emit(element);
       }
     }
   }
+  @Output() newEntitaSelezionata = new EventEmitter<EntitaEr>();
 
   ngOnInit(): void {
   }

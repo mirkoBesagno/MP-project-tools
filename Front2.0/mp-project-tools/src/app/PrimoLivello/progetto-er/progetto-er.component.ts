@@ -42,6 +42,9 @@ export class ProgettoERComponent implements OnInit {
     }
     return -1;
   }
+  ModificaElementoSelezionato(item: EntitaEr){
+    this.nuovaEntita=item;
+  }
   SalvaEntita() {
     for (let index = 0; index < this.nuovaEntita.listaAttributi.length; index++) {
       const attributoNuovaEntita = this.nuovaEntita.listaAttributi[index];
@@ -54,7 +57,7 @@ export class ProgettoERComponent implements OnInit {
             presente = true;
             if (attributoNuovaEntita.tipologia == TipologiaAttributo[TipologiaAttributo.vettore]) {
               var attnew = new AttributoModel();
-              attnew.tipologia = TipologiaAttributo[TipologiaAttributo.forkey];
+              attnew.tipologia = TipologiaAttributo[TipologiaAttributo.vettore];
               //attnew.tipoAttributo = entTmp.nomeEntita;
               attnew.ModificaTipoAttributo(this.nuovaEntita.nomeEntita);
             }
@@ -91,7 +94,7 @@ export class ProgettoERComponent implements OnInit {
 
     if (this.PosizioneElemento(this.nuovaEntita.nomeEntita) >= 0) {
       console.log("Gia presente");
-      var tmp = this.listaEntitaER[this.PosizioneElemento(this.nuovaEntita.nomeEntita)];
+     /*  var tmp = this.listaEntitaER[this.PosizioneElemento(this.nuovaEntita.nomeEntita)];
       for (let index = 0; index < this.nuovaEntita.listaAttributi.length; index++) {
         const attrNuovo = tmp.listaAttributi[index];
         var presente = false;
@@ -106,7 +109,7 @@ export class ProgettoERComponent implements OnInit {
         } else {
           tmp.AggiungiAttributo(attrNuovo);
         }
-      }
+      } */
       this.nuovaEntita = new EntitaEr();
     } else {
       this.listaEntitaER.push(this.nuovaEntita);

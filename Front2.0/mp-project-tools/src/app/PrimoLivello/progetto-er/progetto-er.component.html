@@ -96,7 +96,7 @@
             <div class="modal-body">
                 <div>
                     <p>Nuova entita</p>
-                    <app-entita-er [SetEntitaSelezionata]="nuovaEntita" [SetaMostraAttributo]="true"></app-entita-er>
+                    <app-entita-er [SetEntitaSelezionata]="nuovaEntita" [SetaMostraAttributo]="true" (newEntitaSelezionata)="ModificaElementoSelezionato($event)"></app-entita-er>
                     <button (click)="SalvaEntita()">Salva entita</button>
                 </div>
             </div>
