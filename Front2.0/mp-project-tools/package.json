@@ -26,6 +26,7 @@
     "@types/mermaid": "^8.2.1",
     "html-to-text": "^6.0.0",
     "mermaid": "^8.8.4",
+    "ngx-treeview": "^10.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

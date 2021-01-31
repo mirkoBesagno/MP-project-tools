@@ -21,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material/MaterialModule';
 
+import { TreeviewModule } from 'ngx-treeview';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { MaterialModule } from './material/MaterialModule';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    TreeviewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

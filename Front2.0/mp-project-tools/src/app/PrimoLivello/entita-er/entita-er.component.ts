@@ -32,19 +32,19 @@ export class EntitaERComponent implements OnInit {
 
   ModificaTipologiaAttributoNuovo(item: string) {
     this.attributoNuovo.tipologia = item;
-    if (item == TipologiaAttributo[TipologiaAttributo.vettore] || item ==  TipologiaAttributo[TipologiaAttributo.forkey]) {
+    if (item == TipologiaAttributo[TipologiaAttributo.vettore] || item == TipologiaAttributo[TipologiaAttributo.forkey]) {
       this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntitaER();
     }
   }
-  ClickTipoAttribtuo(item: string){
-    this.attributoNuovo.tipoAttributo=item;
+  ClickTipoAttribtuo(item: string) {
+    this.attributoNuovo.tipoAttributo = item;
     this.ModificaTipoAttributoNuovo(this.attributoNuovo.tipoAttributo);
   }
   possibilitaTipoAttributo: string[] = [];
   ModificaTipoAttributoNuovo(item: string) {
     this.attributoNuovo.tipoAttributo = item;
     if (this.attributoNuovo.tipologia == TipologiaAttributo[TipologiaAttributo.vettore] ||
-       this.attributoNuovo.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
+      this.attributoNuovo.tipologia == TipologiaAttributo[TipologiaAttributo.forkey]) {
       this.attributoNuovo.nomeAttributo = this.attributoNuovo.tipologia + item.substring(0, 1).toUpperCase() + item.substr(1);
     }
   }
@@ -52,21 +52,21 @@ export class EntitaERComponent implements OnInit {
   constructor() {
 
   }
-nomiEntita:string[]=[];
-  AggiornaEntita(){
-    this.nomiEntita=[];
+  nomiEntita: string[] = [];
+  AggiornaEntita() {
+    this.nomiEntita = [];
     try {
-      
-    for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
-      const element = Utility.Progetto.listaEntitaER[index];
-      this.nomiEntita.push(element.nomeEntita);
-    }
+
+      for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
+        const element = Utility.Progetto.listaEntitaER[index];
+        this.nomiEntita.push(element.nomeEntita);
+      }
     } catch (error) {
-      console.log("Errore : "+error);
-      
+      console.log("Errore : " + error);
+
     }
   }
-  ClickSelezionaEntita(item:string){
+  ClickSelezionaEntita(item: string) {
     for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
       const element = Utility.Progetto.listaEntitaER[index];
       if (element.nomeEntita == item) {
