@@ -103,4 +103,5 @@ export class EntitaERComponent implements OnInit {
     document.getElementById('tipologiaEntita').focus();
     this.CreaDiagrammaER();
   }
+  
 }

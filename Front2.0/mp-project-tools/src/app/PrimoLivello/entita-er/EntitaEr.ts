@@ -23,6 +23,9 @@ export class EntitaEr {
   tipologia: string = "";
   tipoAttributo: string = "";
   testo: string = "";
+  GetPerDiagrammaERCreated(){
+    return "classDiagram " + this.GetPerDiagrammaER();
+  }
   GetPerDiagrammaER() {
     let ritorno: string = "";
     for (let index = 0; index < this.listaAttributi.length; index++) {
