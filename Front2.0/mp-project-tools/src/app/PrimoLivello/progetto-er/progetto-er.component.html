@@ -184,6 +184,7 @@
                 *ngFor="let item of entitaSelezionate"
             >
                 <app-entita-er
+                [SetId]="item.nomeEntita+'progettoentita'"
                     [SetEntitaSelezionata]="item"
                     [SetaMostraAttributo]="false"
                 ></app-entita-er>
@@ -191,7 +192,7 @@
         </mat-tab-group>
     </div>
     <div class="col-9">
-        <app-diagra-mermaid [testoER]="testoEr"></app-diagra-mermaid>
+        <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid>
         <!-- <ul id="myUL">
             <li>
                 <span class="caret">Beverages</span>

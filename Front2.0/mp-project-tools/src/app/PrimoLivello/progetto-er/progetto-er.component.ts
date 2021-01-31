@@ -3,7 +3,7 @@ import { ProgettoModel } from 'src/app/model/progetto.model';
 import { EntitaEr } from "../entita-er/EntitaEr";
 import { Utility } from './Utility';
 import { AttributoModel, TipoAttributo, TipologiaAttributo, TipologiaEntita } from "../../../app/model/typeorm/model/Model";
-import { TreeviewItem } from 'ngx-treeview';
+//import { TreeviewItem } from 'ngx-treeview';
 
 @Component({
   selector: 'app-progetto-er',
@@ -19,7 +19,7 @@ export class ProgettoERComponent implements OnInit {
     decoupleChildFromParent: false,
     maxHeight: 500
   };
-  itCategory = new TreeviewItem({
+  /* itCategory = new TreeviewItem({
     text: "IT",
     value: 9,
     children: [
@@ -56,7 +56,7 @@ export class ProgettoERComponent implements OnInit {
         ],
       },
     ],
-  });
+  }); */
 
 
   esisteProgetto: boolean = false;

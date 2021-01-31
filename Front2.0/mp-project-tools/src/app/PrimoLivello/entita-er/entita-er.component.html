@@ -4,29 +4,15 @@
         <div class="input-group-prepend">
             <span class="input-group-text testoPiccolo">Nome Entita:</span>
         </div>
-        <input
-            type="text"
-            [value]="entitaSelezionata.nomeEntita"
-            class="testoPiccolo form-control"
-            (input)='entitaSelezionata.nomeEntita = $event.target.value'
-        >
+        <input type="text" [value]="entitaSelezionata.nomeEntita" class="testoPiccolo form-control"
+            (input)='entitaSelezionata.nomeEntita = $event.target.value'>
         <div class="input-group-append">
-            <button
-                class="btn btn-outline-secondary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                (input)='ModificaTipoAttributoNuovo($event.target.value)'
-                (click)="AggiornaEntita()"
-            >
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" (input)='ModificaTipoAttributoNuovo($event.target.value)'
+                (click)="AggiornaEntita()">
                 #
                 <div class="dropdown-menu">
-                    <a
-                        class="dropdown-item"
-                        *ngFor="let item of nomiEntita"
-                        (click)="ClickSelezionaEntita(item)"
-                    >
+                    <a class="dropdown-item" *ngFor="let item of nomiEntita" (click)="ClickSelezionaEntita(item)">
                         {{item}}
                     </a>
                 </div>
@@ -37,12 +23,8 @@
         <div class="input-group-prepend">
             <span class="input-group-text testoPiccolo">Tipo Entita:</span>
         </div>
-        <select
-            id="tipoEntita"
-            [value]="entitaSelezionata.tiopoEntita"
-            class="testoPiccolo custom-select"
-            (input)='entitaSelezionata.tiopoEntita = $event.target.value'
-        >
+        <select id="tipoEntita" [value]="entitaSelezionata.tiopoEntita" class="testoPiccolo custom-select"
+            (input)='entitaSelezionata.tiopoEntita = $event.target.value'>
             <option value="entita">entita</option>
             <option value="attore">attore</option>
         </select>
@@ -60,16 +42,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <select
-                            id="tipologiaEntita"
-                            [value]="attributoNuovo.tipologia"
+                        <select id="tipologiaEntita" [value]="attributoNuovo.tipologia"
                             class="testoPiccolo custom-select"
-                            (input)='ModificaTipologiaAttributoNuovo($event.target.value)'
-                        >
-                            <option
-                                *ngFor="let item of TipologiaAttributo.values()"
-                                value="{{item}}"
-                            >
+                            (input)='ModificaTipologiaAttributoNuovo($event.target.value)'>
+                            <option *ngFor="let item of TipologiaAttributo.values()" value="{{item}}">
                                 {{item}}
                             </option>
                         </select>
@@ -77,45 +53,26 @@
                     <td>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <button
-                                    class="btn btn-outline-secondary dropdown-toggle"
-                                    type="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    (input)='ModificaTipoAttributoNuovo($event.target.value)'
-                                >
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    (input)='ModificaTipoAttributoNuovo($event.target.value)'>
                                     #
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a
-                                        class="dropdown-item"
-                                        *ngFor="let item of possibilitaTipoAttributo"
-                                        (click)="ClickTipoAttribtuo(item)"
-                                    >
+                                    <a class="dropdown-item" *ngFor="let item of possibilitaTipoAttributo"
+                                        (click)="ClickTipoAttribtuo(item)">
                                         {{item}}
                                     </a>
                                 </div>
                             </div>
-                            <input
-                                type="text"
-                                [value]="attributoNuovo.tipoAttributo"
-                                class="testoPiccolo form-control"
-                                (input)='ModificaTipoAttributoNuovo($event.target.value)'
-                            >
+                            <input type="text" [value]="attributoNuovo.tipoAttributo" class="testoPiccolo form-control"
+                                (input)='ModificaTipoAttributoNuovo($event.target.value)'>
                         </div>
                     </td>
                     <td>
-                        <label
-                            class="testoPiccolo"
-                            for="nomeEntita "
-                        >
-                            <input
-                                type="text"
-                                [value]="attributoNuovo.nomeAttributo"
-                                class="testoPiccolo form-control"
-                                (input)='attributoNuovo.nomeAttributo= $event.target.value'
-                            >
+                        <label class="testoPiccolo" for="nomeEntita ">
+                            <input type="text" [value]="attributoNuovo.nomeAttributo" class="testoPiccolo form-control"
+                                (input)='attributoNuovo.nomeAttributo= $event.target.value'>
                         </label>
                     </td>
                     <td>
@@ -128,18 +85,26 @@
 </div>
 <!-- elenco attributi -->
 <div>
-    <table style="background-color: darkseagreen;">
-        <tbody>
-            <tr>
-                <th>Tipologia</th>
-                <th>Tipo</th>
-                <th>Nome</th>
-            </tr>
-            <tr *ngFor="let item of entitaSelezionata.listaAttributi">
-                <td>{{item.tipologia}}</td>
-                <td>{{item.tipoAttributo}}</td>
-                <td>{{item.nomeAttributo}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-6">
+            <table style="background-color: darkseagreen;">
+                <tbody>
+                    <tr>
+                        <th>Tipologia</th>
+                        <th>Tipo</th>
+                        <th>Nome</th>
+                    </tr>
+                    <tr *ngFor="let item of entitaSelezionata.listaAttributi">
+                        <td>{{item.tipologia}}</td>
+                        <td>{{item.tipoAttributo}}</td>
+                        <td>{{item.nomeAttributo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <app-diagra-mermaid [testoER]="testoEr" [numeroId]="id"></app-diagra-mermaid>
+        </div>
+    </div>
+
 </div>

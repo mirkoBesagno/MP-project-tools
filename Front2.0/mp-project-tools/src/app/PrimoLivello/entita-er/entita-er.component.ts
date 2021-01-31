@@ -13,6 +13,12 @@ import { EntitaEr } from './EntitaEr';
 })
 export class EntitaERComponent implements OnInit {
 
+
+  id = "";
+  @Input() set SetId(item: string) {
+    this.id = item;
+  }
+  testoEr = "";
   TipologiaAttributo = TipologiaAttributo;
 
   entitaSelezionata: EntitaEr = new EntitaEr();
@@ -26,6 +32,10 @@ export class EntitaERComponent implements OnInit {
   @Input()
   set SetEntitaSelezionata(item: EntitaEr) {
     this.entitaSelezionata = item;
+    if (this.id = "") {
+      this.id = item.nomeEntita;
+    }
+    this.CreaDiagrammaER();
   }
 
   attributoNuovo: AttributoModel = new AttributoModel();
@@ -34,6 +44,12 @@ export class EntitaERComponent implements OnInit {
     this.attributoNuovo.tipologia = item;
     if (item == TipologiaAttributo[TipologiaAttributo.vettore] || item == TipologiaAttributo[TipologiaAttributo.forkey]) {
       this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntitaER();
+    }
+  }
+  CreaDiagrammaER() {
+    if (this.entitaSelezionata.GetPerDiagrammaER() != '' || this.entitaSelezionata.GetPerDiagrammaER() != undefined) {
+      const tmp = "classDiagram " + this.entitaSelezionata.GetPerDiagrammaER();
+      this.testoEr = tmp.toString(); /* <br> */
     }
   }
   ClickTipoAttribtuo(item: string) {
@@ -71,6 +87,7 @@ export class EntitaERComponent implements OnInit {
       const element = Utility.Progetto.listaEntitaER[index];
       if (element.nomeEntita == item) {
         this.entitaSelezionata = element;
+        this.CreaDiagrammaER();
         this.newEntitaSelezionata.emit(element);
       }
     }
@@ -84,5 +101,6 @@ export class EntitaERComponent implements OnInit {
     this.entitaSelezionata.AggiungiAttributo(this.attributoNuovo);
     this.attributoNuovo = new AttributoModel();
     document.getElementById('tipologiaEntita').focus();
+    this.CreaDiagrammaER();
   }
 }

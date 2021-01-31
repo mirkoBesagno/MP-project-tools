@@ -17,18 +17,22 @@ export class DiagraMermaidComponent implements OnInit {
   constructor() { }
   private _testoEr: string;
 
+  id='';
+  @Input() set numeroId(item: string) {
+    this.id = item;
+  }
   @Input() set testoER(item: string) {
-    if (item != undefined && item != '') {
+    if (item != undefined && item != '' && item != "classDiagram ") {
       this._testoEr = item;
 
       //mermaid.initialize(this.config);
-      const element: any = document.getElementById('graficoER');
+      const element: any = document.getElementById('graficoER'+this.id);
       const graphDefinition = htmlToText(item, {
         wordwrap: null
       });
       try {
 
-        mermaid.render('graphDiv', graphDefinition, (svgCode,
+        mermaid.render('graphDiv'+this.id, graphDefinition, (svgCode,
           bindFunctions) => {
           element.innerHTML = svgCode;
           bindFunctions(element);
