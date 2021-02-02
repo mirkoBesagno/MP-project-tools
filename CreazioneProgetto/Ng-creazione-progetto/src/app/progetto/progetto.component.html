@@ -1,0 +1,71 @@
+<p>progetto works!</p>
+<span>
+    <label for="" title="">Percorso progetto
+        <input title="Percorso compreso di cartella" type="text" [value]="percorso"
+            (input)='percorso = $event.target.value'>
+    </label>
+</span>
+<span>
+    <label for="" title="">Nome progetto
+        <input title="nome del progetto" type="text" [value]="nomeProgetto"
+            (input)='nomeProgetto = $event.target.value'>
+    </label>
+</span>
+<span>
+    <label for="" title="">Nome file da creare:
+        <input title="Nome del file, se prima si è settata la cartellaaltrimenti errore o creazione nella root"
+            type="text" [value]="nomeFile" (input)='nomeFile = $event.target.value'>
+    </label>
+</span>
+<span>
+    <label for="" title="">Estensione file :
+        <input title="l'estensione del file come *.txt" type="text" [(value)]="estensioneFile"
+            (input)='estensioneFile = $event.target.value'>
+    </label>
+</span>
+<span>
+    <label for="" title="">Testo del file
+        <textarea name="" id="" cols="30" rows="10" [value]="testoFile"
+            (input)='testoFile = $event.target.value'></textarea>
+    </label>
+</span>
+
+<span>
+    <div>
+        <p>Aggiungi EntitaER</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#aggiungiEntita">
+            Aggiungi entita
+        </button>
+    </div>
+    <div *ngFor="let item of listaEntitaER">
+        <app-entita-er [Inizializza]="item"></app-entita-er>
+    </div>
+</span>
+<button (click)="StampaElemento()">LOG()</button>
+
+
+<div class="modal fade" id="aggiungiEntita" tabindex="-1" role="dialog" aria-hidden="true"
+    aria-labelledby="nuovoAttributoLabel" style="width: 100%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Modal title
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>Nuova entita</p>
+                    <app-entita-er [Inizializza]="GetNuovaEntita()"
+                        (newEntitaSelezionata)="SetNuovaEntita($event)" [triggeraNuovaEntita]="triggeraNuovaEntita"></app-entita-er>
+                    <button (click)="SalvaEntita()">Salva entita</button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
