@@ -10,7 +10,7 @@ import { AttributoEntita } from './attributo-entita.entita';
 export class AttributoEntitaComponent extends AttributoEntita implements OnInit {
 
   @Output() newAttributoEntita = new EventEmitter<AttributoEntita>()//();//;
-  @Input() GetAttributoEntita(item:boolean) {
+  @Input() set TriggeraNewAttributoEntita(item:boolean) {
     if (item) {
       var tmp = new AttributoEntita();
       tmp.nomeAttributo = this.nomeAttributo;

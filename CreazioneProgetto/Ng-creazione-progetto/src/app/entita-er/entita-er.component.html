@@ -35,7 +35,7 @@
 <div *ngIf="abilitaNuovoAttributo">
     <p>nuovo attributo</p>
     <div>
-        <app-attributo-entita [GetAttributoEntita]='triggeraNuovoAttributo' (newAttributoEntita)="listaAttributi.AggiungiAttributo($event)" ></app-attributo-entita>
+        <app-attributo-entita [TriggeraNewAttributoEntita]='triggeraNuovoAttributo' (newAttributoEntita)="listaAttributi.AggiungiAttributo($event)" ></app-attributo-entita>
         <button (click)="triggeraNuovoAttributo = true">Aggiunti</button>
     </div>
 </div>

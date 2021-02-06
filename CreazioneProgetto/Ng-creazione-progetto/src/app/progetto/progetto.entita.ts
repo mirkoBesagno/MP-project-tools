@@ -1,5 +1,7 @@
 /* import { exec } from "child-process-promise"; */
 
+import { AttributoEntita } from "../attributo-entita/attributo-entita.entita";
+import { TipologiaAttributo } from "../attributo-entita/enum/TipologiaAttributo.1";
 import { EntitaER } from "../entita-er/entita-er.entita";
 
 export class Progetto {
@@ -48,22 +50,36 @@ export class Progetto {
     AggiungiEntita(item: EntitaER) {
         let presente: boolean = false;
         this.listaEntitaER.forEach(element => {
-          if (element.nomeEntita == item.nomeEntita) {
-            presente = true;
-          }
+            if (element.nomeEntita == item.nomeEntita) {
+                presente = true;
+                for (let index = element.listaAttributi.GetLenght(); index < item.listaAttributi.GetLenght(); index++){
+                    const element2 = item.listaAttributi[index];
+                    element.AggiungiAttributo(element2);
+                }
+            }
         });
         if (!presente) {
-          this.listaEntitaER.push(item);
+            this.listaEntitaER.push(item);
         }
-        for (let index = 0; index < this.listaEntitaER.length; index++) {
-          const element = this.listaEntitaER[index];
-          if (element.nomeEntita == item.nomeEntita) {
-            //this.lenghtListaAttributiSapalla = element.listaAttributi.length;
-           // this.indiceEntitaSelezionata = index;
-          }
-        }
-      }
+    }
 
+
+    GetEntitaPerDiagrammaEr() {
+        let testo: string = "";
+        this.listaEntitaER.forEach(element => {
+            testo = testo + element.GetPerDiagrammaER();
+        });
+        return testo;
+    }
+
+    GetListaNomiEntitaER(): string[] {
+        let vett: string[] = [];
+        for (let index = 0; index < this.listaEntitaER.length; index++) {
+            const element = this.listaEntitaER[index];
+            vett.push(element.nomeEntita);
+        }
+        return vett;
+    }
 
     Salva() {
         /* //cartelle
@@ -76,6 +92,30 @@ export class Progetto {
         this.env.Salva();
         this.package.Salva();
         this.tsconfig.Salva(); */
+    }
+
+    PosizioneElemento(item: string) {
+        for (let index = 0; index < this.listaEntitaER.length; index++) {
+            const element = this.listaEntitaER[index];
+            if (element.nomeEntita == item) {
+                return index;
+            }
+        }
+        return -1;
+    }
+    CreaPrototipoAttributoOpposto(tipologiaOriginale: TipologiaAttributo) {
+        if (tipologiaOriginale == TipologiaAttributo.vettore) {
+            var attnew = new AttributoEntita();
+            attnew.tipologia = TipologiaAttributo.forkey;
+            //attnew.tipoAttributo = entTmp.nomeEntita;
+            return attnew;
+        }
+        else if (tipologiaOriginale == TipologiaAttributo.forkey) {
+            var attnew = new AttributoEntita();
+            attnew.tipologia = TipologiaAttributo.vettore;
+            //attnew.tipoAttributo = entTmp.nomeEntita;
+            return attnew;
+        }
     }
     /* 
       AggiungiEntita(item: EntitaER) {

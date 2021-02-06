@@ -9,6 +9,10 @@ import { EntitaErComponent } from './entita-er/entita-er.component';
 import { ListaEntitaErComponent } from './lista-entita-er/lista-entita-er.component';
 import { AttributoEntitaComponent } from './attributo-entita/attributo-entita.component';
 import { ListaAttributoEntitaComponent } from './lista-attributo-entita/lista-attributo-entita.component';
+import { PrimaVistaProgettoComponent } from './progetto/prima-vista/prima-vista.component';
+import { PrimaVistaEntitaErComponent } from "./entita-er/prima-vista/prima-vista.component";
+
+import { MaterialModule } from './material/MaterialModule';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,15 @@ import { ListaAttributoEntitaComponent } from './lista-attributo-entita/lista-at
     EntitaErComponent,
     ListaEntitaErComponent,
     AttributoEntitaComponent,
-    ListaAttributoEntitaComponent
+    ListaAttributoEntitaComponent,
+    PrimaVistaProgettoComponent,
+    PrimaVistaEntitaErComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,3 @@
 export enum TipologiaAttributo {
-    forkey, vettore, altro
+    forkey = 0, vettore=1, altro=2
 }

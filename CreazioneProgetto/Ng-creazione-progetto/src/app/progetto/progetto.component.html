@@ -60,7 +60,7 @@
             <div class="modal-body">
                 <div>
                     <p>Nuova entita</p>
-                    <app-entita-er [Inizializza]="GetNuovaEntita()"
+                    <app-entita-er [Inizializza]="GetNuovaEntita"
                         (newEntitaSelezionata)="SetNuovaEntita($event)" [triggeraNuovaEntita]="triggeraNuovaEntita"></app-entita-er>
                     <button (click)="SalvaEntita()">Salva entita</button>
                 </div>

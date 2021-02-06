@@ -1,0 +1,110 @@
+<p>prima-vista works! entita-er works!</p>
+<div>
+    <!-- Attributi nome, tipologia  -->
+    <div class="input-group mb-3">
+        <div class="input-group-prepend"><!-- nome entita -->
+            <span class="input-group-text testoPiccolo">Nome Entita:</span>
+        </div>
+        <input type="text" [value]="entitaSelezionata.nomeEntita" class="testoPiccolo form-control"
+            (input)='entitaSelezionata.nomeEntita = $event.target.value'>
+        <div class="input-group-append"><!-- cambia entita rapido -->
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"
+                (input)='attributoNuovo.ModificaTipoAttributo($event.target.value)' (click)="AggiornaEntita()">
+                #
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" *ngFor="let item of possibiliNomiEntita"
+                        (click)="ClickSelezionaEntita(item)">
+                        {{item}}
+                    </a>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="input-group mb-3"><!-- tipologia entita -->
+        <div class="input-group-prepend">
+            <span class="input-group-text testoPiccolo">Tipologia Entita:</span>
+        </div>
+        <select id="tipoEntita" [value]="entitaSelezionata.tipologiaEntitaErString" class="testoPiccolo custom-select"
+            (input)='entitaSelezionata.ModificaTipologiaEntita($event.target.value)'>
+            <option value="entita">entita</option>
+            <option value="attore">attore</option>
+        </select>
+    </div>
+</div>
+<div *ngIf="abilitaNuovoAttributo">
+    <p>nuovo attributo</p>
+    <div>
+        <table style="background-color: cornflowerblue;">
+            <tbody>
+                <tr>
+                    <th>Tipologia</th>
+                    <th>Tipo</th>
+                    <th>Nome</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="tipologiaEntita" [value]="attributoNuovo.tipologiaAttributoToString" class="testoPiccolo custom-select"
+                            (input)='attributoNuovo.SettaTipologiaConString($event.target.value)'>
+                            <option *ngFor="let item of enumTipologiaAttributo.values()" value="{{item}}">
+                                {{item}} <!-- forkey, vettore, altro -->
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    #
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" *ngFor="let item of possibilitaTipoAttributo"
+                                        (click)="ClickTipoAttribtuo(item)">
+                                        {{item}}
+                                    </a>
+                                </div>
+                            </div>
+                            <input type="text" [value]="attributoNuovo.tipoAttributo" class="testoPiccolo form-control"
+                                (input)='attributoNuovo.ModificaTipoAttributo($event.target.value)'>
+                        </div>
+                    </td>
+                    <td>
+                        <label class="testoPiccolo" for="nomeEntita ">
+                            <input type="text" [value]="attributoNuovo.nomeAttributo" class="testoPiccolo form-control"
+                                (input)='attributoNuovo.nomeAttributo = $event.target.value'>
+                        </label>
+                    </td>
+                    <td>
+                        <button (click)="AggiungiAttributo()">Aggiunti</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- elenco attributi -->
+<div>
+    <div class="row">
+        <div class="col-6">
+            <table style="background-color: darkseagreen;">
+                <tbody>
+                    <tr>
+                        <th>Tipologia</th>
+                        <th>Tipo</th>
+                        <th>Nome</th>
+                    </tr>
+                    <tr *ngFor="let item of entitaSelezionata.listaAttributi.listaAttributoEntita">
+                        <td>{{item.tipologia}}</td>
+                        <td>{{item.tipoAttributo}}</td>
+                        <td>{{item.nomeAttributo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="col-6">
+            <app-diagra-mermaid [testoER]="this.entitaSelezionata.GetPerDiagrammaERCreated()" [numeroId]="id"></app-diagra-mermaid>
+        </div> -->
+    </div>
+
+</div>

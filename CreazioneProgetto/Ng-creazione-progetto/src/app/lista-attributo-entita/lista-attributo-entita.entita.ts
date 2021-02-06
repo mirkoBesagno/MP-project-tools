@@ -10,4 +10,7 @@ export class ListaAttributoEntita {
     AggiungiAttributo(item : AttributoEntita){
         this.listaAttributoEntita.push(item);
     }
+    GetLenght(){
+        return this.listaAttributoEntita.length;
+    }
 }

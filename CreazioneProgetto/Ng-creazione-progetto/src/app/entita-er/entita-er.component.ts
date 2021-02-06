@@ -11,10 +11,10 @@ export class EntitaErComponent extends EntitaER implements OnInit {
 
   triggeraNuovoAttributo = false;
   abilitaNuovoAttributo;
-  @Input() AbilitaNuovoAttributo(item: boolean) {
+  @Input() set AbilitaNuovoAttributo(item: boolean) {
     this.abilitaNuovoAttributo = item;
   }
-  @Input() Inizializza(item: EntitaER) {
+  @Input() set Inizializza(item: EntitaER) {
     debugger;
     super.id = item.id;
     super.listaAttributi = item.listaAttributi;
@@ -23,7 +23,7 @@ export class EntitaErComponent extends EntitaER implements OnInit {
     super.tipologiaEntitaER = item.tipologiaEntitaER;
   }
   @Output() newEntitaER = new EventEmitter<EntitaER>()//();//;
-  @Input() triggeraNuovaEntita(item: boolean) {
+  @Input() set triggeraNuovaEntita(item: boolean) {
     debugger;
     if (item) {
       var tmp = new EntitaER();

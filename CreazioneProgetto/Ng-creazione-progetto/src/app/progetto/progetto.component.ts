@@ -10,12 +10,13 @@ import { Progetto } from "./progetto.entita";
 export class ProgettoComponent extends Progetto implements OnInit {
   
   private nuovaEntita: EntitaER=new EntitaER();
-  public GetNuovaEntita(): EntitaER {
+  public get GetNuovaEntita(): EntitaER {
     return this.nuovaEntita;//this._nuovaEntita;
   }
   public SetNuovaEntita(value: EntitaER) {
     debugger;
     this.nuovaEntita = value;
+    this.triggeraNuovaEntita = false;
   }
 
   constructor() { super("","",Date[Date.now()]) }
