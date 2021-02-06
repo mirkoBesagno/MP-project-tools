@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EntitaER } from '../entita-er/entita-er.entita';
-import { Progetto } from "./progetto.entita";
+import { EntitaER } from '../../entita-er/entita-er.entita';
+import { Progetto } from "../progetto.entita";
 
 @Component({
   selector: 'app-progetto',

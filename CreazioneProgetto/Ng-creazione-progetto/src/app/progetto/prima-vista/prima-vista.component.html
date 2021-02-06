@@ -19,14 +19,19 @@
                 <span class="input-group-text">Percorso progetto></span>
             </div>
             <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm" (input)='percorso= $event.target.value'
-                [value]="percorso">
+                aria-describedby="inputGroup-sizing-sm" (input)='percorso= $event.target.value' [value]="percorso">
         </div>
         <!-- scelte -->
         <div class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
+                <!-- triggera modale lista comandi -->
+                <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
+                    data-target="#listaComandi">
+                    Visualizza lista comandi
+                </button>
                 <!-- crea progetto -->
-                <button class="btn btn-sm btn-outline-success" type="button"> <!--  (click)="CreaProgetto()" -->
+                <button class="btn btn-sm btn-outline-success" type="button">
+                    <!--  (click)="CreaProgetto()" -->
                     Genera
                     <ng-container *ngIf="esisteProgetto==false else elseTemplate">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -89,14 +94,55 @@
                     <p>Nuova entita</p>
                     <app-entita-er-prima-vista [SetEntitaSelezionata]="entitaSelezionata" [SetaMostraAttributo]="true"
                         (newEntitaSelezionata)="ModificaElementoSelezionato($event)"></app-entita-er-prima-vista>
-                     <button (click)="SalvaEntita()">Salva entita</button>
+                    <button (click)="SalvaEntita()">Salva entita</button>
                 </div>
             </div>
             <div class="modal-footer"></div>
         </div>
     </div>
 </div>
-
+<!-- lista comandi -->
+<div class="modal fade" id="listaComandi" tabindex="-1" role="dialog" aria-hidden="true"
+    aria-labelledby="nuovoAttributoLabel" style="width: 100%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Modal title
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <!-- lista comandi -->
+                    <div *ngFor="let item of listaComandi">
+                        <span>
+                            <label for="" title="">Eseguito :
+                                <input title="l'estensione del file come *.txt" type="checkbox"
+                                    [(value)]="item.eseguito" (input)='estensioneFile = $event.target.value'>
+                            </label>
+                        </span>
+                        <span>
+                            <label for="" title="">Da eseguire :
+                                <input title="l'estensione del file come *.txt" type="checkbox"
+                                    [(value)]="item.daEseguire" (input)='estensioneFile = $event.target.value'>
+                            </label>
+                        </span>
+                        <span>
+                            <label for="" title="">comando :
+                                <input title="l'estensione del file come *.txt" type="text" [(value)]="item.comando"
+                                    (input)='estensioneFile = $event.target.value'>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -114,7 +160,7 @@
         </mat-tab-group>
     </div>
     <div class="col-9">
-       <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
+        <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
         <!-- <ul id="myUL">
             <li>
                 <span class="caret">Beverages</span>

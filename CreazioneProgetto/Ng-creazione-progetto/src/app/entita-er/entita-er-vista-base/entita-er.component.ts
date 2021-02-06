@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EntitaER } from './entita-er.entita';
-import { TipologiaEntita } from './enum/TipologiaEntita';
+import { EntitaER } from '../entita-er.entita';
+import { TipologiaEntita } from '../enum/TipologiaEntita';
 
 @Component({
   selector: 'app-entita-er',

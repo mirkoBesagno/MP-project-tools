@@ -6,6 +6,17 @@ import { EntitaER } from "../entita-er/entita-er.entita";
 
 export class Progetto {
 
+    listaComandi = [
+        {
+            "comando": "npm install",
+            "eseguite": false,
+            "daEseguire":false
+        }, {
+            "comando": "npm install",
+            "eseguite": false,
+            "daEseguire":false
+        }
+    ];
     percorso: string = "";
     nomeProgetto: string = "";
     testoFile: string = "";
@@ -52,7 +63,7 @@ export class Progetto {
         this.listaEntitaER.forEach(element => {
             if (element.nomeEntita == item.nomeEntita) {
                 presente = true;
-                for (let index = element.listaAttributi.GetLenght(); index < item.listaAttributi.GetLenght(); index++){
+                for (let index = element.listaAttributi.GetLenght(); index < item.listaAttributi.GetLenght(); index++) {
                     const element2 = item.listaAttributi[index];
                     element.AggiungiAttributo(element2);
                 }

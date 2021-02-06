@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EntitaER } from '../entita-er/entita-er.entita';
-import { AttributoEntita } from './attributo-entita.entita';
+import { EntitaER } from '../../entita-er/entita-er.entita';
+import { AttributoEntita } from '../attributo-entita.entita';
 
 @Component({
   selector: 'app-attributo-entita',
