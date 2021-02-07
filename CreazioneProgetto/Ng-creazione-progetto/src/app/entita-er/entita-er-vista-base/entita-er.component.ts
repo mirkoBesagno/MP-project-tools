@@ -15,7 +15,7 @@ export class EntitaErComponent extends EntitaER implements OnInit {
     this.abilitaNuovoAttributo = item;
   }
   @Input() set Inizializza(item: EntitaER) {
-    debugger;
+    //debugger;
     super.id = item.id;
     super.listaAttributi = item.listaAttributi;
     super.nomeEntita = item.nomeEntita;
@@ -24,7 +24,7 @@ export class EntitaErComponent extends EntitaER implements OnInit {
   }
   @Output() newEntitaER = new EventEmitter<EntitaER>()//();//;
   @Input() set triggeraNuovaEntita(item: boolean) {
-    debugger;
+    //debugger;
     if (item) {
       var tmp = new EntitaER();
       tmp.listaAttributi = this.listaAttributi;

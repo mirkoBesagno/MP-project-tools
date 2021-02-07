@@ -26,6 +26,7 @@ export class DiagrammaMermaidVistaBaseComponent implements AfterViewInit {
 
   id = '';
   @Input() set numeroId(item: string) {
+    debugger;
     this.id = item;
   }
   @Input() set testoER(item: string) {

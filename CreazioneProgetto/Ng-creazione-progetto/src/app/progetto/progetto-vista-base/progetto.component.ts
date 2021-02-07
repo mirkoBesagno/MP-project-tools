@@ -14,7 +14,7 @@ export class ProgettoComponent extends Progetto implements OnInit {
     return this.nuovaEntita;//this._nuovaEntita;
   }
   public SetNuovaEntita(value: EntitaER) {
-    debugger;
+    //debugger;
     this.nuovaEntita = value;
     this.triggeraNuovaEntita = false;
   }
@@ -29,7 +29,7 @@ export class ProgettoComponent extends Progetto implements OnInit {
   }
 triggeraNuovaEntita=false;
   SalvaEntita(){
-    debugger;
+    //debugger;
     this.triggeraNuovaEntita=true;
     /* this.AggiungiEntita(this.nuovaEntita);
     this.nuovaEntita = new EntitaER(); */

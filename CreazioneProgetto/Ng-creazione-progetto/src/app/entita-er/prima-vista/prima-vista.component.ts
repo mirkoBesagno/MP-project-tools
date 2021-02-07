@@ -20,11 +20,11 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
   enumTipologiaAttributo = EnumTipologiaAttributo.TipologiaAttributo;
 
   entitaSelezionata: EntitaER = new EntitaER();
-  @Input() set TriggeraEntitaSelezionata(item: boolean){
+  @Input() set TriggeraEntitaSelezionata(item: boolean) {
     if (item == true) {
       this.newEntitaSelezionata.emit(this.entitaSelezionata);
     } else {
-      
+
     }
   }
 
@@ -36,20 +36,23 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
   abilitaNuovoAttributo
   @Input()
   set SetaMostraAttributo(item: boolean) {
-    debugger;
+    //debugger;
     this.abilitaNuovoAttributo = item;
   }
 
   @Input()
   set SetEntitaSelezionata(item: EntitaER) {
+    debugger;
     this.entitaSelezionata = item;
-    if (this.id = "") {
+    this.id = this.entitaSelezionata.id;
+    if (this.id == "") {
       this.id = item.nomeEntita;
     }
+    this.CreaDiagrammaER();
     //this.CreaDiagrammaER();
   }
   constructor() { super(); }
-  SettaTipologiaConString(item:string){
+  SettaTipologiaConString(item: string) {
     this.attributoNuovo.SettaTipologiaConString(item);
     this.ModificaPossibilitaTipi();
   }
@@ -60,13 +63,13 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
     }
   }
   ClickTipoAttribtuo(item: string) {
-    debugger;
+    //debugger;
     this.attributoNuovo.tipoAttributo = item;
     this.attributoNuovo.ModificaTipoAttributo(this.attributoNuovo.tipoAttributo);
   }
   possibilitaTipoAttributo: string[] = [];
   AggiornaEntita() {
-    debugger;
+    //debugger;
     this.possibiliNomiEntita = [];
     try {
 
@@ -80,7 +83,7 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
     }
   }
   ClickSelezionaEntita(item: string) {
-    debugger;
+    //debugger;
     for (let index = 0; index < Utility.Progetto.listaEntitaER.length; index++) {
       const element = Utility.Progetto.listaEntitaER[index];
       if (element.nomeEntita == item) {
@@ -105,11 +108,11 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
 
   }
   AggiungiAttributo() {
-    debugger;
+    //debugger;
     this.entitaSelezionata.AggiungiAttributo(this.attributoNuovo);
     this.attributoNuovo = new AttributoEntita();
     document.getElementById('tipologiaEntita').focus();
-    //this.CreaDiagrammaER();
+    this.CreaDiagrammaER();
   }
 
 }

@@ -60,7 +60,8 @@ export class Progetto {
 
     AggiungiEntita(item: EntitaER) {
         let presente: boolean = false;
-        debugger;
+        
+        //debugger;
         this.listaEntitaER.forEach(element => {
             if (element.nomeEntita == item.nomeEntita) {
                 presente = true;
@@ -77,7 +78,7 @@ export class Progetto {
 
 
     GetEntitaPerDiagrammaEr() {
-        debugger;
+        //debugger;
         let testo: string = "";
         for (let index = 0; index < this.listaEntitaER.length; index++) {
             const element = this.listaEntitaER[index];
@@ -118,7 +119,7 @@ export class Progetto {
         return -1;
     }
     CreaPrototipoAttributoOpposto(tipologiaOriginale: TipologiaAttributo/* , nomeEntitaOriginale:string */) {
-        debugger;
+        //debugger;
         if (tipologiaOriginale == TipologiaAttributo.vettore) {
             var attnew = new AttributoEntita();
             attnew.tipologia = TipologiaAttributo.forkey;

@@ -35,6 +35,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
   TipologiaAttributo = TipologiaAttributo;
 
   entitaSelezionata: EntitaER = new EntitaER();
+  
 
   indiceEntitaSelezionata = 0;
   abilitaNuovoAttributo
@@ -53,11 +54,20 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
 
   }
   @Output() newEntitaSelezionata = new EventEmitter<EntitaER>();
+
   esisteProgetto: boolean;
   nomiEntita: string[] = [];
   attributoNuovo: AttributoEntita = new AttributoEntita();
   lenghtListaAttributiSapalla = 0;
 
+ClickAggiungiElemento(item: EntitaER){
+  debugger;
+  this.AggiungiEntita(item);
+  this.entitaSelezionata = item;
+}
+ClickNuovoElemento(){
+  this.entitaSelezionata = new EntitaER();
+}
   ClickTipoAttribtuo(item: string) {
     this.attributoNuovo.tipoAttributo = item;
     this.ModificaTipoAttributoNuovo(this.attributoNuovo.tipoAttributo);
@@ -90,7 +100,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
     }
   }
   generaEr() {
-    debugger;
+    //debugger;
     const tmp = "classDiagram " + Utility.Progetto.GetEntitaPerDiagrammaEr();
     this.testoEr = tmp.toString(); /* <br> */
   }
@@ -130,7 +140,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
   }
   triggeraGetEntita = false;
   SalvaEntita() {
-    debugger;
+    //debugger;
     this.triggeraGetEntita = true;
     //se l'entita è gia presente parto dall'ultimo elemnto presente contando che i precedenti non possono essere toccati
     var indexMio = this.lenghtListaAttributiSapalla;
@@ -153,7 +163,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
             const tmp = attributoNuovaEntita.tipologia;
             //se è presente costruisco l'attributo corrispondente e glielo assegno
             var attnew = this.CreaPrototipoAttributoOpposto(tmp);
-            debugger;
+            //debugger;
             attnew.ModificaTipoAttributo(this.entitaSelezionata.nomeEntita);
             element.AggiungiAttributo(attnew); //assegnazione attributo
           }
@@ -165,7 +175,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
           entTmp.tipologiaEntitaER = TipologiaEntita.entita;
           const tmp: TipologiaAttributo = attributoNuovaEntita.tipologia;
           var attnew = this.CreaPrototipoAttributoOpposto(tmp);
-          debugger;
+          //debugger;
           attnew.ModificaTipoAttributo(this.entitaSelezionata.nomeEntita);
           entTmp.AggiungiAttributo(attnew);
           this.listaEntitaER.push(entTmp);

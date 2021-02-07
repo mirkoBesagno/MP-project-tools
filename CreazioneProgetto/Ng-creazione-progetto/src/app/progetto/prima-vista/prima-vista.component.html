@@ -57,7 +57,7 @@
                 </button>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
-                    data-target="#aggiungiEntita">
+                    data-target="#aggiungiEntita" (click)="ClickNuovoElemento()">
                     Aggiungi entita
                 </button>
             </div>
@@ -70,7 +70,7 @@
 
     <div class="collapse navbar-collapse form-inline" style="padding: 0%;">
         <button class="btn btn-sm btn-outline-secondary" type="button" *ngFor="let item of listaEntitaER"
-            (click)="AggiungiEntita(item)">
+            (click)="ClickAggiungiElemento(item)">
             {{item.nomeEntita}}
         </button>
     </div>
@@ -92,7 +92,8 @@
             <div class="modal-body">
                 <div>
                     <p>Nuova entita</p>
-                    <app-entita-er-prima-vista [SetEntitaSelezionata]="entitaSelezionata" [SetaMostraAttributo]="true"
+                    <app-entita-er-prima-vista [SetEntitaSelezionata]="entitaSelezionata"
+                     [SetaMostraAttributo]="true"
                         (newEntitaSelezionata)="ModificaElementoSelezionato($event)"
                         [TriggeraEntitaSelezionata]="triggeraGetEntita"></app-entita-er-prima-vista>
                     <button (click)="SalvaEntita()">Salva entita</button>
@@ -149,22 +150,25 @@
 
 
 <div class="row">
-    <div class="col-3">
-        <mat-tab-group [selectedIndex]="indiceEntitaSelezionata"
+    <div class="col-5">
+        <!-- <mat-tab-group [selectedIndex]="indiceEntitaSelezionata"
             (selectedIndexChange)="indiceEntitaSelezionata = $event">
             <mat-tab label="{{item.nomeEntita}}" *ngFor="let item of listaEntitaER">
-                <app-entita-er-prima-vista [SetId]="item.nomeEntita +'progettoentita'" [SetEntitaSelezionata]="item"
+                <app-entita-er-prima-vista [SetId]="item.nomeEntita +'progettoentita'" 
+                [SetEntitaSelezionata]="item"
                     [SetaMostraAttributo]="false"></app-entita-er-prima-vista>
-                <!-- <app-diagra-mermaid [testoER]="item.GetPerDiagrammaERCreated()"
-                    [numeroId]="'diagrammaelementoselezionato'"></app-diagra-mermaid> -->
             </mat-tab>
-        </mat-tab-group>
+        </mat-tab-group> -->
+        <app-entita-er-prima-vista [SetId]="entitaSelezionata.id" 
+        [SetEntitaSelezionata]="entitaSelezionata"
+            [SetaMostraAttributo]="true"></app-entita-er-prima-vista>
     </div>
-    <div class="col-9">
+    <div class="col-7">
 
-        <app-diagramma-mermaid-vista-base [testoER]="testoEr"></app-diagramma-mermaid-vista-base>
-            <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
-            <!-- <ul id="myUL">
+        <app-diagramma-mermaid-vista-base [numeroId]="'diagrammaDelProgetto'" 
+        [testoER]="testoEr"></app-diagramma-mermaid-vista-base>
+        <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
+        <!-- <ul id="myUL">
             <li>
                 <span class="caret">Beverages</span>
                 <ul class="nested">
@@ -189,12 +193,12 @@
                 </ul>
             </li>
         </ul> -->
-            <!-- <ngx-dropdown-treeview
+        <!-- <ngx-dropdown-treeview
   [config]="config"
   [items]="itCategory"
 >
 </ngx-dropdown-treeview> -->
-            <!-- <mat-tab-group>
+        <!-- <mat-tab-group>
             <mat-tab label="First">
                 <app-diagra-mermaid [testoER]="testoEr"></app-diagra-mermaid>
             </mat-tab>
@@ -208,8 +212,8 @@
                 </mat-tree>
             </mat-tab>
         </mat-tab-group> -->
-        </div>
     </div>
+</div>
 
 
 
@@ -222,7 +226,7 @@
 
 
 
-    <!-- <div class="row">
+<!-- <div class="row">
     <div class="col-sm-3">
         <div style="background-color: aliceblue;">
             <div class="row">
