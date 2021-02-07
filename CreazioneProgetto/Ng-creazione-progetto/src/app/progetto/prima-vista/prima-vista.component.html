@@ -93,7 +93,7 @@
                 <div>
                     <p>Nuova entita</p>
                     <app-entita-er-prima-vista [SetEntitaSelezionata]="entitaSelezionata" [SetaMostraAttributo]="true"
-                        (newEntitaSelezionata)="ModificaElementoSelezionato($event)"></app-entita-er-prima-vista>
+                        (newEntitaSelezionata)="ModificaElementoSelezionato($event)" [TriggeraEntitaSelezionata]="triggeraGetEntita"></app-entita-er-prima-vista>
                     <button (click)="SalvaEntita()">Salva entita</button>
                 </div>
             </div>
@@ -121,19 +121,19 @@
                         <span>
                             <label for="" title="">Eseguito :
                                 <input title="l'estensione del file come *.txt" type="checkbox"
-                                    [(value)]="item.eseguito" (input)='estensioneFile = $event.target.value'>
+                                    [(value)]="item.eseguite" (input)='item.eseguite = $event.target.value'>
                             </label>
                         </span>
                         <span>
                             <label for="" title="">Da eseguire :
                                 <input title="l'estensione del file come *.txt" type="checkbox"
-                                    [(value)]="item.daEseguire" (input)='estensioneFile = $event.target.value'>
+                                    [(value)]="item.daEseguire" (input)='item.daEseguire = $event.target.value'>
                             </label>
                         </span>
                         <span>
                             <label for="" title="">comando :
                                 <input title="l'estensione del file come *.txt" type="text" [(value)]="item.comando"
-                                    (input)='estensioneFile = $event.target.value'>
+                                    (input)='item.comando = $event.target.value'>
                             </label>
                         </span>
                     </div>

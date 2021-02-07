@@ -20,6 +20,13 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
   enumTipologiaAttributo = EnumTipologiaAttributo.TipologiaAttributo;
 
   entitaSelezionata: EntitaER = new EntitaER();
+  @Input() set TriggeraEntitaSelezionata(item: boolean){
+    if (item == true) {
+      this.newEntitaSelezionata.emit(this.entitaSelezionata);
+    } else {
+      
+    }
+  }
 
   attributoNuovo: AttributoEntita = new AttributoEntita();
 
@@ -59,6 +66,7 @@ export class PrimaVistaEntitaErComponent extends EntitaER implements OnInit {
   }
   possibilitaTipoAttributo: string[] = [];
   AggiornaEntita() {
+    debugger;
     this.possibiliNomiEntita = [];
     try {
 

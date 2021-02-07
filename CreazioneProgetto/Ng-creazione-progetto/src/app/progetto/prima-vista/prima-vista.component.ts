@@ -13,7 +13,14 @@ import { Progetto } from '../progetto.entita';
 })
 export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
 
-  constructor() { super("", "", Date[Date.now()]); } //istanzio un'entita di progetto
+  constructor() {
+    super("", "", Date[Date.now()]);
+    if (Utility.Progetto == undefined) {
+      Utility.Progetto = this;
+    }
+    else {
+    }
+  } //istanzio un'entita di progetto
   id = "";
   @Input() set SetId(item: string) {
     this.id = item;
@@ -61,7 +68,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
     if (this.attributoNuovo.tipologia == TipologiaAttributo.vettore || this.attributoNuovo.tipologia == TipologiaAttributo.forkey) {
       this.possibilitaTipoAttributo = Utility.Progetto.GetListaNomiEntitaER();
     }
-    else{
+    else {
       this.possibilitaTipoAttributo = Utility.ElenecoTipoAttributoPerAltro();
     }
   }
@@ -113,8 +120,10 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
     document.getElementById('tipologiaEntita').focus();
     this.CreaDiagrammaER();
   }
+  triggeraGetEntita = false;
   SalvaEntita() {
     debugger;
+    this.triggeraGetEntita = true;
     //se l'entita è gia presente parto dall'ultimo elemnto presente contando che i precedenti non possono essere toccati
     var indexMio = this.lenghtListaAttributiSapalla;
     /*  if (this.PosizioneElemento(this.nuovaEntita.nomeEntita)>=0) {
@@ -136,7 +145,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
             const tmp = attributoNuovaEntita.tipologia;
             //se è presente costruisco l'attributo corrispondente e glielo assegno
             var attnew = this.CreaPrototipoAttributoOpposto(tmp);
-
+            debugger;
             attnew.ModificaTipoAttributo(this.entitaSelezionata.nomeEntita);
             element.AggiungiAttributo(attnew); //assegnazione attributo
           }
@@ -148,6 +157,8 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
           entTmp.tipologiaEntitaER = TipologiaEntita.entita;
           const tmp: TipologiaAttributo = attributoNuovaEntita.tipologia;
           var attnew = this.CreaPrototipoAttributoOpposto(tmp);
+          debugger;
+          attnew.ModificaTipoAttributo(this.entitaSelezionata.nomeEntita);
           entTmp.AggiungiAttributo(attnew);
           this.listaEntitaER.push(entTmp);
         }

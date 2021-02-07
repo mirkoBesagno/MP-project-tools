@@ -1,4 +1,3 @@
-<p>prima-vista works! entita-er works!</p>
 <div>
     <!-- Attributi nome, tipologia  -->
     <div class="input-group mb-3">
@@ -95,7 +94,7 @@
                         <th>Nome</th>
                     </tr>
                     <tr *ngFor="let item of entitaSelezionata.listaAttributi.listaAttributoEntita">
-                        <td>{{item.tipologia}}</td>
+                        <td>{{item.tipologiaAttributoToString}}</td>
                         <td>{{item.tipoAttributo}}</td>
                         <td>{{item.nomeAttributo}}</td>
                     </tr>

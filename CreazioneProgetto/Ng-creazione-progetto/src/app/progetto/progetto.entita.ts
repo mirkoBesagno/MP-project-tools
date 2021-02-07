@@ -60,6 +60,7 @@ export class Progetto {
 
     AggiungiEntita(item: EntitaER) {
         let presente: boolean = false;
+        debugger;
         this.listaEntitaER.forEach(element => {
             if (element.nomeEntita == item.nomeEntita) {
                 presente = true;
@@ -114,16 +115,19 @@ export class Progetto {
         }
         return -1;
     }
-    CreaPrototipoAttributoOpposto(tipologiaOriginale: TipologiaAttributo) {
+    CreaPrototipoAttributoOpposto(tipologiaOriginale: TipologiaAttributo/* , nomeEntitaOriginale:string */) {
+        debugger;
         if (tipologiaOriginale == TipologiaAttributo.vettore) {
             var attnew = new AttributoEntita();
             attnew.tipologia = TipologiaAttributo.forkey;
+            /* attnew.ModificaTipoAttributo(nomeEntitaOriginale); */
             //attnew.tipoAttributo = entTmp.nomeEntita;
             return attnew;
         }
         else if (tipologiaOriginale == TipologiaAttributo.forkey) {
             var attnew = new AttributoEntita();
             attnew.tipologia = TipologiaAttributo.vettore;
+            /* attnew.ModificaTipoAttributo(nomeEntitaOriginale); */
             //attnew.tipoAttributo = entTmp.nomeEntita;
             return attnew;
         }

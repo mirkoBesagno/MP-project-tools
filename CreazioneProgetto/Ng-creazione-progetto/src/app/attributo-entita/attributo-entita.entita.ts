@@ -9,7 +9,8 @@ export class AttributoEntita {
     private _tipologiaAttributoToString = "altro";
     public get tipologiaAttributoToString() {
         if (this._tipologiaAttributoToString!= undefined || this._tipologiaAttributoToString !='') {
-        return this._tipologiaAttributoToString;
+        return TipologiaAttributo[this.tipologia];
+            //return this._tipologiaAttributoToString;
         } else {
             return TipologiaAttributo[TipologiaAttributo.altro];
         }
@@ -18,7 +19,6 @@ export class AttributoEntita {
         this.SettaTipologiaConString(value);
     }
     SettaTipologiaConString(item: string) {
-        debugger;
         try {
             this.tipologia = TipologiaAttributo[item];
             this._tipologiaAttributoToString = item;
@@ -34,14 +34,12 @@ export class AttributoEntita {
 
     }
     SettAttributo(nomeAttributo: string, tipoAttributo: string, tipologia: string) {
-        debugger;
         this.nomeAttributo = nomeAttributo;
         this.tipoAttributo = tipoAttributo;
         this.tipologia = TipologiaAttributo[tipologia];
         this.testo = "";
     }
     ModificaTipoAttributo(item: string) {
-        debugger;
         this.tipoAttributo = item;
         if (this.tipologia == TipologiaAttributo.vettore || this.tipologia == TipologiaAttributo.forkey) {
             this.nomeAttributo = TipologiaAttributo[this.tipologia] + item.substring(0, 1).toUpperCase() + item.substr(1);
