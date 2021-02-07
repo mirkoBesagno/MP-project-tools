@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrimaVistaComponent } from './prima-vista.component';
+import { PrimaVistaProgettoComponent } from './prima-vista.component';
 
 describe('PrimaVistaComponent', () => {
-  let component: PrimaVistaComponent;
-  let fixture: ComponentFixture<PrimaVistaComponent>;
+  let component: PrimaVistaProgettoComponent;
+  let fixture: ComponentFixture<PrimaVistaProgettoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrimaVistaComponent ]
+      declarations: [ PrimaVistaProgettoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrimaVistaComponent);
+    fixture = TestBed.createComponent(PrimaVistaProgettoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

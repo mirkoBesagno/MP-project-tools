@@ -93,7 +93,8 @@
                 <div>
                     <p>Nuova entita</p>
                     <app-entita-er-prima-vista [SetEntitaSelezionata]="entitaSelezionata" [SetaMostraAttributo]="true"
-                        (newEntitaSelezionata)="ModificaElementoSelezionato($event)" [TriggeraEntitaSelezionata]="triggeraGetEntita"></app-entita-er-prima-vista>
+                        (newEntitaSelezionata)="ModificaElementoSelezionato($event)"
+                        [TriggeraEntitaSelezionata]="triggeraGetEntita"></app-entita-er-prima-vista>
                     <button (click)="SalvaEntita()">Salva entita</button>
                 </div>
             </div>
@@ -160,8 +161,10 @@
         </mat-tab-group>
     </div>
     <div class="col-9">
-        <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
-        <!-- <ul id="myUL">
+
+        <app-diagramma-mermaid-vista-base [testoER]="testoEr"></app-diagramma-mermaid-vista-base>
+            <!--  <app-diagra-mermaid [testoER]="testoEr" [numeroId]="'diagrammaprogetto'"></app-diagra-mermaid> -->
+            <!-- <ul id="myUL">
             <li>
                 <span class="caret">Beverages</span>
                 <ul class="nested">
@@ -186,12 +189,12 @@
                 </ul>
             </li>
         </ul> -->
-        <!-- <ngx-dropdown-treeview
+            <!-- <ngx-dropdown-treeview
   [config]="config"
   [items]="itCategory"
 >
 </ngx-dropdown-treeview> -->
-        <!-- <mat-tab-group>
+            <!-- <mat-tab-group>
             <mat-tab label="First">
                 <app-diagra-mermaid [testoER]="testoEr"></app-diagra-mermaid>
             </mat-tab>
@@ -205,8 +208,8 @@
                 </mat-tree>
             </mat-tab>
         </mat-tab-group> -->
+        </div>
     </div>
-</div>
 
 
 
@@ -219,7 +222,7 @@
 
 
 
-<!-- <div class="row">
+    <!-- <div class="row">
     <div class="col-sm-3">
         <div style="background-color: aliceblue;">
             <div class="row">

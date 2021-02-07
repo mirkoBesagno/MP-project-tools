@@ -13,6 +13,7 @@ import { PrimaVistaProgettoComponent } from './progetto/prima-vista/prima-vista.
 import { PrimaVistaEntitaErComponent } from "./entita-er/prima-vista/prima-vista.component";
 
 import { MaterialModule } from './material/MaterialModule';
+import { DiagrammaMermaidVistaBaseComponent } from './diagramma-mermaid/diagramma-mermaid-vista-base/diagramma-mermaid-vista-base.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MaterialModule } from './material/MaterialModule';
     AttributoEntitaComponent,
     ListaAttributoEntitaComponent,
     PrimaVistaProgettoComponent,
-    PrimaVistaEntitaErComponent
+    PrimaVistaEntitaErComponent,
+    DiagrammaMermaidVistaBaseComponent
   ],
   imports: [
     BrowserModule,

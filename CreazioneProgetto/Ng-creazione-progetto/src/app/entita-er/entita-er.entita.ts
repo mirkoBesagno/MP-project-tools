@@ -59,10 +59,11 @@ export class EntitaER implements IEntitaER {
     }
 
     GetPerDiagrammaER() {
+      debugger;
         let ritorno: string = "";
         for (let index = 0; index < this.listaAttributi.listaAttributoEntita.length; index++) {
-            const element = this.listaAttributi[index];
-            switch (element.tipologia) {
+            const element = this.listaAttributi.listaAttributoEntita[index];
+            switch (TipologiaAttributo[element.tipologia]) {
                 case "forkey":
                 case "fk":
                     ritorno = ritorno + "<br>  " + element.tipoAttributo + " --|> " + this.nomeEntita + " "; /* <br> */

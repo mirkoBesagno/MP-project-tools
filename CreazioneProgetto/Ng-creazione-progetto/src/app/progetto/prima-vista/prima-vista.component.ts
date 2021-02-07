@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, Directive, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AttributoEntita } from 'src/app/attributo-entita/attributo-entita.entita';
 import { TipologiaAttributo } from "src/app/attributo-entita/enum/TipologiaAttributo.1";
 import { EntitaER } from 'src/app/entita-er/entita-er.entita';
@@ -6,13 +6,18 @@ import { TipologiaEntita } from 'src/app/entita-er/enum/TipologiaEntita';
 import { Utility } from 'src/app/utility/utility.entita';
 import { Progetto } from '../progetto.entita';
 
+/* @Directive({selector: 'diagramma-mermaid'})
+export class DiagrammaMermaid {
+  @Input() testo!: string;
+} */
+
 @Component({
   selector: 'app-progetto-prima-vista',
   templateUrl: './prima-vista.component.html',
   styleUrls: ['./prima-vista.component.css']
 })
 export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
-
+  
   constructor() {
     super("", "", Date[Date.now()]);
     if (Utility.Progetto == undefined) {
@@ -20,6 +25,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
     }
     else {
     }
+    
   } //istanzio un'entita di progetto
   id = "";
   @Input() set SetId(item: string) {
@@ -44,6 +50,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
       this.id = item.nomeEntita;
     }
     this.CreaDiagrammaER();
+
   }
   @Output() newEntitaSelezionata = new EventEmitter<EntitaER>();
   esisteProgetto: boolean;
@@ -83,6 +90,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
     }
   }
   generaEr() {
+    debugger;
     const tmp = "classDiagram " + Utility.Progetto.GetEntitaPerDiagrammaEr();
     this.testoEr = tmp.toString(); /* <br> */
   }
@@ -112,7 +120,7 @@ export class PrimaVistaProgettoComponent extends Progetto implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+  } 
 
   AggiungiAttributo() {
     this.entitaSelezionata.AggiungiAttributo(this.attributoNuovo);

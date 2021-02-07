@@ -10,11 +10,11 @@ export class Progetto {
         {
             "comando": "npm install",
             "eseguite": false,
-            "daEseguire":false
+            "daEseguire": false
         }, {
             "comando": "npm install",
             "eseguite": false,
-            "daEseguire":false
+            "daEseguire": false
         }
     ];
     percorso: string = "";
@@ -77,10 +77,12 @@ export class Progetto {
 
 
     GetEntitaPerDiagrammaEr() {
+        debugger;
         let testo: string = "";
-        this.listaEntitaER.forEach(element => {
+        for (let index = 0; index < this.listaEntitaER.length; index++) {
+            const element = this.listaEntitaER[index];
             testo = testo + element.GetPerDiagrammaER();
-        });
+        };
         return testo;
     }
 
